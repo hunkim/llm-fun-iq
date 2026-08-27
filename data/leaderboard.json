@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-27T01:23:06.634Z",
+  "updated_at": "2026-08-27T01:23:26.070Z",
   "results": [
     {
       "id": "solar-pro2",
@@ -93,6 +93,51 @@
         }
       },
       "evaluated_at": "2026-08-27T01:18:38.803Z",
+      "ok": true
+    },
+    {
+      "id": "solar-mini",
+      "name": "Solar Mini",
+      "provider": "Upstage",
+      "ai_iq": 86,
+      "label": "패턴 탐색자",
+      "correct": 50,
+      "total": 168,
+      "accuracy": 0.2976,
+      "format_failures": 0,
+      "avg_ms": 341,
+      "tokens": 134356,
+      "family": {
+        "affine_steps": {
+          "correct": 7,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 3,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 6,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 8,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 9,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 9,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 8,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-27T01:23:26.070Z",
       "ok": true
     },
     {
