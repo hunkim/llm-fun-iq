@@ -19,7 +19,7 @@ const MAX_COMPLETION_TOKENS = 32768;
 const REASONING_MAX_TOKENS = 32768;
 const TOKEN_LADDER = [32768, 65536, 98304];
 const REASONING_EFFORT = { "solar-pro4": "high" };
-const HIDDEN_MODELS = new Set(["k-exaone-2.0-750b-a37b", "deepseek-v4-pro"]);
+const HIDDEN_MODELS = new Set(["k-exaone-2.0-750b-a37b", "deepseek-v4-pro", "solar-pro4"]);
 const PREFERRED = [
   "solar-pro4",
   "solar-pro3",
