@@ -10,13 +10,14 @@ import { spawnSync } from "node:child_process";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://api.timelyrouter.ai";
-const TIMEOUT_MS = 90_000;
+const TIMEOUT_MS = 3_600_000;
 const CONCURRENCY = 3;
-const MODEL_PARALLEL = 3;
+const MODEL_PARALLEL = 10;
 const RETRIES = 2;
 const FORMAT_ATTEMPTS = 3;
-const MAX_COMPLETION_TOKENS = 2048;
-const REASONING_MAX_TOKENS = 8192;
+const MAX_COMPLETION_TOKENS = 32768;
+const REASONING_MAX_TOKENS = 32768;
+const TOKEN_LADDER = [32768, 65536, 98304];
 const REASONING_EFFORT = { "solar-pro4": "high" };
 const PREFERRED = [
   "solar-pro4",
@@ -180,12 +181,14 @@ function extractReasoning(data) {
 }
 
 function extraBodyFor(model) {
+  const extra = {};
+  if (/^gpt-5\.6/.test(model)) extra.omit_temperature = true;
   const effort = REASONING_EFFORT[model];
-  if (!effort) return {};
-  return {
-    reasoning_effort: effort,
-    max_completion_tokens: REASONING_MAX_TOKENS,
-  };
+  if (effort) {
+    extra.reasoning_effort = effort;
+    extra.max_completion_tokens = REASONING_MAX_TOKENS;
+  }
+  return extra;
 }
 
 function tokenCount(usage) {
@@ -225,10 +228,11 @@ function shouldRetry(err) {
   return s === 429 || (s >= 500 && s <= 599);
 }
 
-async function chatOnce(key, model, messages) {
+async function chatOnce(key, model, messages, maxTokens) {
   const start = Date.now();
   const extra = extraBodyFor(model);
-  const timeout = extra.reasoning_effort ? 180_000 : TIMEOUT_MS;
+  const timeout = TIMEOUT_MS;
+  const max_completion_tokens = maxTokens || extra.max_completion_tokens || MAX_COMPLETION_TOKENS;
   try {
     const { res, text, json } = await fetchJson(`${API}/v1/chat/completions`, {
       key,
@@ -237,8 +241,8 @@ async function chatOnce(key, model, messages) {
       body: {
         model,
         messages,
-        max_completion_tokens: extra.max_completion_tokens || MAX_COMPLETION_TOKENS,
-        temperature: 0,
+        max_completion_tokens,
+        ...(extra.omit_temperature ? {} : { temperature: 0 }),
         ...(extra.reasoning_effort ? { reasoning_effort: extra.reasoning_effort } : {}),
       },
     });
@@ -277,11 +281,11 @@ async function chatOnce(key, model, messages) {
   }
 }
 
-async function chatWithRetry(key, model, messages) {
+async function chatWithRetry(key, model, messages, maxTokens) {
   let last;
   for (let attempt = 0; attempt <= RETRIES; attempt++) {
     try {
-      return await chatOnce(key, model, messages);
+      return await chatOnce(key, model, messages, maxTokens);
     } catch (e) {
       last = e;
       if (attempt < RETRIES && shouldRetry(e)) {
@@ -303,13 +307,15 @@ async function completeAndParse(key, model, prompt) {
   ];
   let last = { content: "", reasoning: "", parsed: null, tokens: 0, ms: 0 };
   for (let attempt = 1; attempt <= FORMAT_ATTEMPTS; attempt++) {
-    const out = await chatWithRetry(key, model, messages);
-    last = { ...out, formatAttempts: attempt };
+    const maxTokens = TOKEN_LADDER[Math.min(attempt - 1, TOKEN_LADDER.length - 1)];
+    const out = await chatWithRetry(key, model, messages, maxTokens);
+    last = { ...out, formatAttempts: attempt, maxTokens };
     if (out.parsed) return last;
     messages.push({ role: "assistant", content: out.content || "(empty)" });
     messages.push({ role: "user", content: FORMAT_NUDGE });
     if (attempt < FORMAT_ATTEMPTS) {
-      console.log(`  format retry ${attempt}/${FORMAT_ATTEMPTS - 1}`);
+      const next = TOKEN_LADDER[Math.min(attempt, TOKEN_LADDER.length - 1)];
+      console.log(`  format retry ${attempt}/${FORMAT_ATTEMPTS - 1} tokens=${next}`);
     }
   }
   return last;
