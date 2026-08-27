@@ -319,6 +319,16 @@ a:hover {
   font-weight: 600;
 }
 
+.stat-fmt {
+  color: #ff8a7a;
+  font-weight: 600;
+}
+
+.stat-fmt b {
+  color: #ff6b57;
+  font-weight: 700;
+}
+
 .expand {
   padding: 0 16px 16px 80px;
   border-top: 1px solid var(--line);

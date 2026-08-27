@@ -50,8 +50,8 @@ function ModelCard({
             </span>
           ) : null}
           {result.format_failures > 0 ? (
-            <span>
-              형식 실패 <b>{result.format_failures}</b>
+            <span className="stat-fmt" title="답 글자를 3번 요청했는데도 A–H를 파싱하지 못함">
+              3번 시도 후 형식 실패 <b>{result.format_failures}</b>
             </span>
           ) : null}
           <span>
