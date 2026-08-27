@@ -1,6 +1,6 @@
 import leaderboardJson from "@/data/leaderboard.json";
 import { familyLabel } from "@/lib/families";
-import { formatKst, formatLatency, formatTokens, rankResults } from "@/lib/rank";
+import { competitionRanks, formatKst, formatLatency, formatTokens, rankResults } from "@/lib/rank";
 import type { Leaderboard, LeaderboardResult } from "@/lib/types";
 
 const board = leaderboardJson as Leaderboard;
@@ -105,6 +105,7 @@ function ModelCard({
 
 export default function HomePage() {
   const ranked = rankResults(board.results ?? []);
+  const ranks = competitionRanks(ranked);
   const updated = formatKst(board.updated_at);
 
   return (
@@ -151,7 +152,7 @@ export default function HomePage() {
       ) : (
         <div className="list">
           {ranked.map((result, i) => (
-            <ModelCard key={result.id} result={result} rank={i + 1} />
+            <ModelCard key={result.id} result={result} rank={ranks[i]} />
           ))}
         </div>
       )}

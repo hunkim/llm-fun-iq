@@ -11,6 +11,16 @@ export function rankResults(results: LeaderboardResult[]): LeaderboardResult[] {
   });
 }
 
+/** Same AI IQ shares a place: 7, 7, then 9. */
+export function competitionRanks(sorted: LeaderboardResult[]): number[] {
+  const ranks: number[] = [];
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i].ai_iq === sorted[i - 1].ai_iq) ranks.push(ranks[i - 1]);
+    else ranks.push(i + 1);
+  }
+  return ranks;
+}
+
 export function formatLatency(ms: number): string {
   if (!Number.isFinite(ms) || ms < 0) return "—";
   if (ms < 1000) return `${Math.round(ms)}ms`;

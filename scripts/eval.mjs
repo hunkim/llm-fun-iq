@@ -19,6 +19,7 @@ const MAX_COMPLETION_TOKENS = 32768;
 const REASONING_MAX_TOKENS = 32768;
 const TOKEN_LADDER = [32768, 65536, 98304];
 const REASONING_EFFORT = { "solar-pro4": "high" };
+const HIDDEN_MODELS = new Set(["k-exaone-2.0-750b-a37b"]);
 const PREFERRED = [
   "solar-pro4",
   "solar-pro3",
@@ -500,9 +501,12 @@ async function main() {
     }
   } else {
     const have = new Set(board.results.map((r) => r.id));
-    const missing = catalog.filter((m) => m.id && isServable(health, m) && (force || !have.has(m.id)));
+    const missing = catalog.filter(
+      (m) => m.id && !HIDDEN_MODELS.has(m.id) && isServable(health, m) && (force || !have.has(m.id)),
+    );
     for (const m of catalog) {
-      if (m.id && !isServable(health, m)) console.log(`skip ${m.id} (not servable)`);
+      if (HIDDEN_MODELS.has(m.id)) console.log(`skip ${m.id} (hidden)`);
+      else if (m.id && !isServable(health, m)) console.log(`skip ${m.id} (not servable)`);
     }
     targets = preferSort(missing);
     if (limit != null) targets = targets.slice(0, limit);
