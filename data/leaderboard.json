@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T01:01:22.872Z",
+  "updated_at": "2026-08-27T01:02:20.498Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -411,6 +411,51 @@
       "ok": true
     },
     {
+      "id": "gemini-2.5-flash-lite",
+      "name": "Gemini 2.5 Flash-Lite",
+      "provider": "Google",
+      "ai_iq": 114,
+      "label": "추론 스페셜리스트",
+      "correct": 17,
+      "total": 28,
+      "accuracy": 0.6071,
+      "format_failures": 2,
+      "avg_ms": 6003,
+      "tokens": 76181,
+      "family": {
+        "affine_steps": {
+          "correct": 2,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 3,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 2,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 3,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 1,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 3,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 3,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T01:02:20.498Z",
+      "ok": true
+    },
+    {
       "id": "claude-haiku-4-5",
       "name": "Claude Haiku 4.5",
       "provider": "Anthropic",
@@ -723,51 +768,6 @@
         }
       },
       "evaluated_at": "2026-08-26T23:59:21.972Z",
-      "ok": true
-    },
-    {
-      "id": "gemini-2.5-flash-lite",
-      "name": "Gemini 2.5 Flash-Lite",
-      "provider": "Google",
-      "ai_iq": 81,
-      "label": "패턴 탐색자",
-      "correct": 7,
-      "total": 28,
-      "accuracy": 0.25,
-      "format_failures": 7,
-      "avg_ms": 2409,
-      "tokens": 31009,
-      "family": {
-        "affine_steps": {
-          "correct": 1,
-          "total": 4
-        },
-        "axis_binding": {
-          "correct": 2,
-          "total": 4
-        },
-        "commuting_transform": {
-          "correct": 0,
-          "total": 4
-        },
-        "latin_cycle": {
-          "correct": 1,
-          "total": 4
-        },
-        "modular_addition": {
-          "correct": 0,
-          "total": 4
-        },
-        "union_overlay": {
-          "correct": 1,
-          "total": 4
-        },
-        "xor_overlay": {
-          "correct": 2,
-          "total": 4
-        }
-      },
-      "evaluated_at": "2026-08-27T00:40:04.534Z",
       "ok": true
     },
     {
