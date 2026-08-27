@@ -1,45 +1,234 @@
 {
   "form": "kmiq-v1-20260826",
   "source": "https://github.com/epoko77-ai/ai-iq-test",
-  "suite": "challenge",
-  "items": 28,
-  "strategy": "one item per family×difficulty stratum (7 families × 4 difficulties)",
-  "seed": "kmiq-v1-20260826-stratified",
+  "suite": "full",
+  "items": 168,
+  "strategy": "full form — every item in kmiq-v1-20260826",
   "ids": [
+    "kmiq-027884d11d88d9ff",
+    "kmiq-0946d705a130397e",
     "kmiq-1500df02d07fb999",
+    "kmiq-18a98facf8cf73d9",
+    "kmiq-2cdeaf71fc082a79",
+    "kmiq-74b97d5de907650f",
+    "kmiq-2051eca0d2ddd65e",
+    "kmiq-3cb88a577fece5d9",
+    "kmiq-51811adaccc6fa4c",
+    "kmiq-9b08db6f6b990d27",
+    "kmiq-9e1ab974f39dfb5d",
     "kmiq-b8fc2eff8454430a",
+    "kmiq-07210d884e617c59",
+    "kmiq-35ee7159605b4e77",
+    "kmiq-754a1c8882679c14",
+    "kmiq-856fcfa8b0bfc4fd",
+    "kmiq-8f811a30b26aa5aa",
     "kmiq-dcb45d69b73f68c9",
+    "kmiq-00cfdf5474033f6f",
     "kmiq-149595de91b112ef",
+    "kmiq-5b1676258ab62e13",
+    "kmiq-87f64447ddecd494",
+    "kmiq-b3365c3d787b7367",
+    "kmiq-c4204c45d163fee7",
     "kmiq-1524fc49c3300f7a",
+    "kmiq-2221eee376b369ca",
+    "kmiq-314daafa502b6124",
+    "kmiq-5386b2f285e8ed79",
+    "kmiq-97ed0c99026daa18",
+    "kmiq-d02eca55eef44368",
+    "kmiq-5c1f980a8b6bfbb8",
+    "kmiq-637891763520f59e",
+    "kmiq-6957a4969c248f18",
     "kmiq-c4481fe4e98c2025",
+    "kmiq-c9a6c7ecc279d7b8",
+    "kmiq-d7cedeaa13dafe17",
+    "kmiq-24d806cca257122c",
+    "kmiq-433ebcc04badff3d",
+    "kmiq-63a93f559b839325",
     "kmiq-b47701366f7f3c5d",
+    "kmiq-dc383333f8265bdb",
+    "kmiq-e49968bca6b0d0e6",
     "kmiq-13c0e8ad1c9fd4a3",
+    "kmiq-552d0a029b921fa0",
+    "kmiq-766a587751d115be",
+    "kmiq-abaccb05fdb1abdc",
+    "kmiq-c0c0048e7fc05730",
+    "kmiq-e98fd8edebb480b7",
     "kmiq-8cff6010b6eaedf6",
+    "kmiq-8f6688894d865e2f",
+    "kmiq-989399d9f546ff1a",
+    "kmiq-a79b2d8c7b95d618",
+    "kmiq-e13cc807567b6cc5",
+    "kmiq-e9db40c3334906db",
     "kmiq-20af152cda9b052c",
+    "kmiq-2fbf69c24b931f56",
+    "kmiq-56eba532ddc8b38b",
+    "kmiq-a04b18c9a6b840fa",
+    "kmiq-ba7fad3d68015305",
+    "kmiq-cf2940d7db26397c",
+    "kmiq-14fb67cad63ed12f",
     "kmiq-18100b2f79c15b2a",
+    "kmiq-4e9a9040ab939fa1",
+    "kmiq-81e16aebf89d4d78",
+    "kmiq-c20dcd46e3f1281a",
+    "kmiq-e5e2286a196b2b7d",
+    "kmiq-0569d55353e7a7a1",
+    "kmiq-0a1b9cd3f0c65095",
+    "kmiq-7df0586f78f48af6",
+    "kmiq-909dde8185acd419",
+    "kmiq-91fee66b61490977",
     "kmiq-ecf38f9f7cc26ebf",
+    "kmiq-151befe36d07a4cb",
     "kmiq-187d400b4b33bdd0",
+    "kmiq-9db2a3a4b9a1fc24",
+    "kmiq-b98cc0556505df41",
+    "kmiq-d1ed95320a5726ad",
+    "kmiq-eb0d5e5da9181c49",
+    "kmiq-14298d1eefc82c74",
     "kmiq-1bb622ff5c5d1f59",
+    "kmiq-76788449767d87e3",
+    "kmiq-86e10d0d708125ea",
+    "kmiq-9d7ec3960d021a02",
+    "kmiq-c006f92a822a9659",
+    "kmiq-1d4e924d8aeae429",
+    "kmiq-56668aaa0d1d2ccf",
+    "kmiq-5eac162fe3a62f23",
+    "kmiq-71cee6d483f24294",
+    "kmiq-d6f80090ea7304dc",
     "kmiq-f3d03c7c4f86321a",
+    "kmiq-4c49cda71afd7a5e",
     "kmiq-543840c462610c07",
+    "kmiq-5550822a5c90030f",
+    "kmiq-8bf5e843bee59e7f",
+    "kmiq-8db82e261d518ea5",
+    "kmiq-e1c321e527aba744",
+    "kmiq-513867e234b6b706",
+    "kmiq-cd4e4af9cd029670",
+    "kmiq-e42a8d8d0d8096b1",
+    "kmiq-e701ef9189cb955e",
+    "kmiq-e96fcf88968ba259",
     "kmiq-f5b5ee25ac1216a7",
+    "kmiq-0fcdb76712acd796",
+    "kmiq-33e57a01c225f60a",
+    "kmiq-41d3bbfd62cc5e72",
+    "kmiq-4f41b03aa9adb8b8",
     "kmiq-8bed81f5c4d4a043",
+    "kmiq-ca8a3668c819f487",
+    "kmiq-025e3cb2c52d49c5",
+    "kmiq-0b1a3657569a3a34",
+    "kmiq-2c38ceb7a475ae99",
     "kmiq-5c06e27ab4a3c3ef",
+    "kmiq-7b6ab2342fd64e93",
+    "kmiq-94e43cc154e5e9ec",
+    "kmiq-2d1e7c5aeb90efda",
+    "kmiq-454422313a2d793b",
+    "kmiq-c4b2cd441fb50144",
+    "kmiq-e73d7af0ec97ca30",
     "kmiq-f1f06e39bd25beda",
+    "kmiq-f4447d35a17aec33",
+    "kmiq-0d238b0e5795d263",
+    "kmiq-11de50c2f4d1aa2a",
+    "kmiq-2223b398c8a6c125",
+    "kmiq-3960da5e29f48bc5",
+    "kmiq-94f5cd73b38d4f31",
     "kmiq-9e42e72e584df1a8",
+    "kmiq-1523211e66cb3b94",
+    "kmiq-2b8a6c14ad9c6d98",
     "kmiq-a1d43409829d0201",
+    "kmiq-b9c599f44c537d5b",
+    "kmiq-c3e25e026ae8e730",
+    "kmiq-eb562913df61dc1a",
+    "kmiq-2f85ee0bb9dcde84",
+    "kmiq-351020faf8a89bbb",
     "kmiq-5028212e0e9fdadf",
+    "kmiq-58de6446565629ab",
+    "kmiq-6d41de9144b487b9",
+    "kmiq-967272a019c8050a",
+    "kmiq-0b8d9c164f25e540",
+    "kmiq-26b37f69ecdbded1",
+    "kmiq-55fbfaa63f84cebb",
     "kmiq-57def6884cf9d20f",
+    "kmiq-7d5aaf6f8f1ea3c5",
+    "kmiq-c85feb3c82d88881",
+    "kmiq-45bdb5a7060812fc",
+    "kmiq-54c4ec67471f0613",
+    "kmiq-6f9df426e15dc6e0",
+    "kmiq-79927270b2003774",
+    "kmiq-b02ce4fc9c8e6c9d",
     "kmiq-c48abc3f367981ee",
     "kmiq-1e4a3fcfaa2470c4",
+    "kmiq-5b7f44e48fd2ec39",
+    "kmiq-806c8eb07bb42843",
+    "kmiq-b87f8c06ca2b1e75",
+    "kmiq-d7d2fd4d985ab0c7",
+    "kmiq-e70de656596c2cae",
+    "kmiq-277a9aec0c95ce34",
+    "kmiq-33b69d8338da4ae5",
+    "kmiq-5dc552d65c4c36af",
     "kmiq-c8748cbae272f0b1",
-    "kmiq-ac03a72877b5c342"
+    "kmiq-e5d60bc056ff03e5",
+    "kmiq-e70088cf0aef473e",
+    "kmiq-4fa14c1cdf1709b5",
+    "kmiq-5f2aa74f3420d20b",
+    "kmiq-6a82a32d3c7c629d",
+    "kmiq-ac03a72877b5c342",
+    "kmiq-afd503a92563be48",
+    "kmiq-ffaf8046243de921"
   ],
   "stratum": [
+    {
+      "id": "kmiq-027884d11d88d9ff",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-0946d705a130397e",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
     {
       "id": "kmiq-1500df02d07fb999",
       "family": "affine_steps",
       "difficulty": 1
+    },
+    {
+      "id": "kmiq-18a98facf8cf73d9",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-2cdeaf71fc082a79",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-74b97d5de907650f",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-2051eca0d2ddd65e",
+      "family": "affine_steps",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-3cb88a577fece5d9",
+      "family": "affine_steps",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-51811adaccc6fa4c",
+      "family": "affine_steps",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-9b08db6f6b990d27",
+      "family": "affine_steps",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-9e1ab974f39dfb5d",
+      "family": "affine_steps",
+      "difficulty": 2
     },
     {
       "id": "kmiq-b8fc2eff8454430a",
@@ -47,12 +236,62 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-07210d884e617c59",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-35ee7159605b4e77",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-754a1c8882679c14",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-856fcfa8b0bfc4fd",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-8f811a30b26aa5aa",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-dcb45d69b73f68c9",
       "family": "affine_steps",
       "difficulty": 3
     },
     {
+      "id": "kmiq-00cfdf5474033f6f",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
       "id": "kmiq-149595de91b112ef",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-5b1676258ab62e13",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-87f64447ddecd494",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-b3365c3d787b7367",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-c4204c45d163fee7",
       "family": "affine_steps",
       "difficulty": 4
     },
@@ -62,12 +301,87 @@
       "difficulty": 1
     },
     {
+      "id": "kmiq-2221eee376b369ca",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-314daafa502b6124",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-5386b2f285e8ed79",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-97ed0c99026daa18",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-d02eca55eef44368",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-5c1f980a8b6bfbb8",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-637891763520f59e",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-6957a4969c248f18",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
       "id": "kmiq-c4481fe4e98c2025",
       "family": "axis_binding",
       "difficulty": 2
     },
     {
+      "id": "kmiq-c9a6c7ecc279d7b8",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-d7cedeaa13dafe17",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-24d806cca257122c",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-433ebcc04badff3d",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-63a93f559b839325",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-b47701366f7f3c5d",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-dc383333f8265bdb",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-e49968bca6b0d0e6",
       "family": "axis_binding",
       "difficulty": 3
     },
@@ -77,7 +391,57 @@
       "difficulty": 4
     },
     {
+      "id": "kmiq-552d0a029b921fa0",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-766a587751d115be",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-abaccb05fdb1abdc",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-c0c0048e7fc05730",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-e98fd8edebb480b7",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
       "id": "kmiq-8cff6010b6eaedf6",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-8f6688894d865e2f",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-989399d9f546ff1a",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-a79b2d8c7b95d618",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-e13cc807567b6cc5",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-e9db40c3334906db",
       "family": "commuting_transform",
       "difficulty": 1
     },
@@ -87,9 +451,84 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-2fbf69c24b931f56",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-56eba532ddc8b38b",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-a04b18c9a6b840fa",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-ba7fad3d68015305",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-cf2940d7db26397c",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-14fb67cad63ed12f",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-18100b2f79c15b2a",
       "family": "commuting_transform",
       "difficulty": 3
+    },
+    {
+      "id": "kmiq-4e9a9040ab939fa1",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-81e16aebf89d4d78",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-c20dcd46e3f1281a",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-e5e2286a196b2b7d",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-0569d55353e7a7a1",
+      "family": "commuting_transform",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-0a1b9cd3f0c65095",
+      "family": "commuting_transform",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-7df0586f78f48af6",
+      "family": "commuting_transform",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-909dde8185acd419",
+      "family": "commuting_transform",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-91fee66b61490977",
+      "family": "commuting_transform",
+      "difficulty": 4
     },
     {
       "id": "kmiq-ecf38f9f7cc26ebf",
@@ -97,9 +536,39 @@
       "difficulty": 4
     },
     {
+      "id": "kmiq-151befe36d07a4cb",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
       "id": "kmiq-187d400b4b33bdd0",
       "family": "latin_cycle",
       "difficulty": 1
+    },
+    {
+      "id": "kmiq-9db2a3a4b9a1fc24",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-b98cc0556505df41",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-d1ed95320a5726ad",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-eb0d5e5da9181c49",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-14298d1eefc82c74",
+      "family": "latin_cycle",
+      "difficulty": 2
     },
     {
       "id": "kmiq-1bb622ff5c5d1f59",
@@ -107,9 +576,59 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-76788449767d87e3",
+      "family": "latin_cycle",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-86e10d0d708125ea",
+      "family": "latin_cycle",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-9d7ec3960d021a02",
+      "family": "latin_cycle",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-c006f92a822a9659",
+      "family": "latin_cycle",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-1d4e924d8aeae429",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-56668aaa0d1d2ccf",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-5eac162fe3a62f23",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-71cee6d483f24294",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-d6f80090ea7304dc",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-f3d03c7c4f86321a",
       "family": "latin_cycle",
       "difficulty": 3
+    },
+    {
+      "id": "kmiq-4c49cda71afd7a5e",
+      "family": "latin_cycle",
+      "difficulty": 4
     },
     {
       "id": "kmiq-543840c462610c07",
@@ -117,9 +636,74 @@
       "difficulty": 4
     },
     {
+      "id": "kmiq-5550822a5c90030f",
+      "family": "latin_cycle",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-8bf5e843bee59e7f",
+      "family": "latin_cycle",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-8db82e261d518ea5",
+      "family": "latin_cycle",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-e1c321e527aba744",
+      "family": "latin_cycle",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-513867e234b6b706",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-cd4e4af9cd029670",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-e42a8d8d0d8096b1",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-e701ef9189cb955e",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-e96fcf88968ba259",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
       "id": "kmiq-f5b5ee25ac1216a7",
       "family": "modular_addition",
       "difficulty": 1
+    },
+    {
+      "id": "kmiq-0fcdb76712acd796",
+      "family": "modular_addition",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-33e57a01c225f60a",
+      "family": "modular_addition",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-41d3bbfd62cc5e72",
+      "family": "modular_addition",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-4f41b03aa9adb8b8",
+      "family": "modular_addition",
+      "difficulty": 2
     },
     {
       "id": "kmiq-8bed81f5c4d4a043",
@@ -127,9 +711,59 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-ca8a3668c819f487",
+      "family": "modular_addition",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-025e3cb2c52d49c5",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-0b1a3657569a3a34",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-2c38ceb7a475ae99",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-5c06e27ab4a3c3ef",
       "family": "modular_addition",
       "difficulty": 3
+    },
+    {
+      "id": "kmiq-7b6ab2342fd64e93",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-94e43cc154e5e9ec",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-2d1e7c5aeb90efda",
+      "family": "modular_addition",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-454422313a2d793b",
+      "family": "modular_addition",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-c4b2cd441fb50144",
+      "family": "modular_addition",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-e73d7af0ec97ca30",
+      "family": "modular_addition",
+      "difficulty": 4
     },
     {
       "id": "kmiq-f1f06e39bd25beda",
@@ -137,9 +771,49 @@
       "difficulty": 4
     },
     {
+      "id": "kmiq-f4447d35a17aec33",
+      "family": "modular_addition",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-0d238b0e5795d263",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-11de50c2f4d1aa2a",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-2223b398c8a6c125",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-3960da5e29f48bc5",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-94f5cd73b38d4f31",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
       "id": "kmiq-9e42e72e584df1a8",
       "family": "union_overlay",
       "difficulty": 1
+    },
+    {
+      "id": "kmiq-1523211e66cb3b94",
+      "family": "union_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-2b8a6c14ad9c6d98",
+      "family": "union_overlay",
+      "difficulty": 2
     },
     {
       "id": "kmiq-a1d43409829d0201",
@@ -147,14 +821,104 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-b9c599f44c537d5b",
+      "family": "union_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-c3e25e026ae8e730",
+      "family": "union_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-eb562913df61dc1a",
+      "family": "union_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-2f85ee0bb9dcde84",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-351020faf8a89bbb",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-5028212e0e9fdadf",
       "family": "union_overlay",
       "difficulty": 3
     },
     {
+      "id": "kmiq-58de6446565629ab",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-6d41de9144b487b9",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-967272a019c8050a",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-0b8d9c164f25e540",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-26b37f69ecdbded1",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-55fbfaa63f84cebb",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
       "id": "kmiq-57def6884cf9d20f",
       "family": "union_overlay",
       "difficulty": 4
+    },
+    {
+      "id": "kmiq-7d5aaf6f8f1ea3c5",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-c85feb3c82d88881",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-45bdb5a7060812fc",
+      "family": "xor_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-54c4ec67471f0613",
+      "family": "xor_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-6f9df426e15dc6e0",
+      "family": "xor_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-79927270b2003774",
+      "family": "xor_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-b02ce4fc9c8e6c9d",
+      "family": "xor_overlay",
+      "difficulty": 1
     },
     {
       "id": "kmiq-c48abc3f367981ee",
@@ -167,12 +931,87 @@
       "difficulty": 2
     },
     {
+      "id": "kmiq-5b7f44e48fd2ec39",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-806c8eb07bb42843",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-b87f8c06ca2b1e75",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-d7d2fd4d985ab0c7",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-e70de656596c2cae",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-277a9aec0c95ce34",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-33b69d8338da4ae5",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-5dc552d65c4c36af",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
       "id": "kmiq-c8748cbae272f0b1",
       "family": "xor_overlay",
       "difficulty": 3
     },
     {
+      "id": "kmiq-e5d60bc056ff03e5",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-e70088cf0aef473e",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-4fa14c1cdf1709b5",
+      "family": "xor_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-5f2aa74f3420d20b",
+      "family": "xor_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-6a82a32d3c7c629d",
+      "family": "xor_overlay",
+      "difficulty": 4
+    },
+    {
       "id": "kmiq-ac03a72877b5c342",
+      "family": "xor_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-afd503a92563be48",
+      "family": "xor_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-ffaf8046243de921",
       "family": "xor_overlay",
       "difficulty": 4
     }

@@ -11,8 +11,8 @@ timelyrouter.ai에 모델을 등록하면 다음 날 아침 자동으로 리더�
 
 ## 한눈에
 - 문항: epoko77-ai/ai-iq-test form kmiq-v1-20260826 (MIT, 168문항)
-- 스위트: 챌린지 28문항, data/challenge-ids.json 고정
-- 채점: 정확히 하나의 answer 태그 (A-H). 그 외는 형식 실패
+- 스위트: form 168문항 전체, data/challenge-ids.json 고정
+- 채점: JSON {"answer":"X"} 및 흔한 답 형식에서 A-H 추출
 - 평가: timelyrouter.ai  /  스케일: AI-IQ-FUN-v1
 
 정적보내기(output export)라서 사이트는 커밋된 data/leaderboard.json만 읽습니다.

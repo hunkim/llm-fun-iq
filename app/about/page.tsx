@@ -31,8 +31,7 @@ export default function AboutPage() {
         <a href="https://github.com/epoko77-ai/ai-iq-test">
           epoko77-ai/ai-iq-test
         </a>
-        의 공개 form <code>kmiq-v1-20260826</code> (MIT) 168문항입니다. 챌린지
-        스위트는 7개 규칙군 × 4개 난도에서 각 1문항, 총 28문항입니다. 선택된
+        의 공개 form <code>kmiq-v1-20260826</code> (MIT) 168문항 전부를 씁니다.
         문항 id는 <code>data/challenge-ids.json</code>에 고정되어 모든 모델이
         같은 문항을 봅니다.
       </p>

@@ -45,7 +45,7 @@ def font(path: str, size: int) -> ImageFont.FreeTypeFont:
 
 def rank_key(r: dict):
     refusals = r.get("refusals") or 0
-    total = r.get("total") or 28
+    total = r.get("total") or 0
     fully_refused = refusals >= total and total > 0
     return (
         fully_refused,
@@ -60,7 +60,7 @@ def rank_key(r: dict):
 def load_top3():
     board = json.loads(BOARD.read_text())
     results = sorted(board.get("results") or [], key=rank_key)
-    return [r for r in results if not ((r.get("refusals") or 0) >= (r.get("total") or 28))][:3]
+    return [r for r in results if not ((r.get("refusals") or 0) >= (r.get("total") or 1) and (r.get("total") or 0) > 0)][:3]
 
 
 def draw_grid(img: Image.Image) -> None:
@@ -94,7 +94,8 @@ def main() -> None:
     text(d, (64, 42), "FunIQ", title, CREAM)
     text(d, (64, 108), "행렬을 푸는 재미 IQ", sub, GOLD)
     text(d, (W - 64, 52), "AI IQ 리더보드", meta_f, MUTED, anchor="rt")
-    text(d, (W - 64, 82), "챌린지 28문항", small, MUTED, anchor="rt")
+    n = (json.loads(BOARD.read_text()) or {}).get("items") or 168
+    text(d, (W - 64, 82), f"{n}문항", small, MUTED, anchor="rt")
 
     y0 = 168
     row_h = 118
@@ -107,7 +108,7 @@ def main() -> None:
         name = r.get("name") or r.get("id") or ""
         provider = r.get("provider") or ""
         correct = r.get("correct")
-        total = r.get("total") or 28
+        total = r.get("total") or 0
         text(d, (148, y + 22), name, name_f, CREAM)
         text(d, (148, y + 64), f"{provider}  ·  {correct}/{total}", meta_f, MUTED)
         iq = r.get("ai_iq")

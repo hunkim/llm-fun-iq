@@ -15,6 +15,9 @@ const CONCURRENCY = 3;
 const RETRIES = 2;
 const MAX_COMPLETION_TOKENS = 2048;
 const PREFERRED = [
+  "solar-pro4",
+  "solar-pro3",
+  "solar-pro2",
   "solar-mini",
   "gpt-5.4-nano",
   "claude-haiku-4-5",
@@ -309,8 +312,8 @@ function upsertResult(board, result) {
     return String(a.id).localeCompare(String(b.id));
   });
   board.updated_at = new Date().toISOString();
-  board.items = 28;
-  board.suite = "challenge";
+  board.items = result.total;
+  board.suite = board.suite || "full";
   if (!board.scale) board.scale = "AI-IQ-FUN-v1";
 }
 
