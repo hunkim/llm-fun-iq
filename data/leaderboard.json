@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-27T05:06:01.763Z",
+  "updated_at": "2026-08-27T05:33:54.013Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -1372,6 +1372,52 @@
         }
       },
       "evaluated_at": "2026-08-27T03:54:30.638Z",
+      "ok": true
+    },
+    {
+      "id": "qwen3.6-35b-a3b",
+      "name": "Qwen3.6 35B A3B",
+      "provider": "Alibaba",
+      "ai_iq": 77,
+      "label": "패턴 탐색자",
+      "correct": 33,
+      "total": 168,
+      "accuracy": 0.1964,
+      "format_failures": 28,
+      "refusals": 0,
+      "avg_ms": 76449,
+      "tokens": 574017,
+      "family": {
+        "affine_steps": {
+          "correct": 4,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 10,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 2,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 3,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 4,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 4,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 6,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-27T05:33:54.013Z",
       "ok": true
     },
     {
