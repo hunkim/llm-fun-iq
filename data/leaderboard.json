@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T01:07:17.347Z",
+  "updated_at": "2026-08-27T01:09:34.218Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -769,6 +769,51 @@
       },
       "evaluated_at": "2026-08-27T01:07:17.347Z",
       "ok": false
+    },
+    {
+      "id": "solar-pro3",
+      "name": "Solar Pro 3",
+      "provider": "Upstage",
+      "ai_iq": 88,
+      "label": "패턴 탐색자",
+      "correct": 9,
+      "total": 28,
+      "accuracy": 0.3214,
+      "format_failures": 0,
+      "avg_ms": 819,
+      "tokens": 19093,
+      "family": {
+        "affine_steps": {
+          "correct": 1,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 2,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 0,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 1,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 1,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 2,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 2,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T01:09:34.209Z",
+      "ok": true
     },
     {
       "id": "glm-5.2",
