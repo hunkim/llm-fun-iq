@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T00:16:27.451Z",
+  "updated_at": "2026-08-27T00:16:53.791Z",
   "results": [
     {
       "id": "claude-opus-4-6",
@@ -273,6 +273,51 @@
         }
       },
       "evaluated_at": "2026-08-26T23:59:21.972Z",
+      "ok": true
+    },
+    {
+      "id": "claude-opus-5",
+      "name": "Claude Opus 5",
+      "provider": "Anthropic",
+      "ai_iq": 68,
+      "label": "워밍업 중",
+      "correct": 3,
+      "total": 28,
+      "accuracy": 0.1071,
+      "format_failures": 25,
+      "avg_ms": 2630,
+      "tokens": 28806,
+      "family": {
+        "affine_steps": {
+          "correct": 1,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 1,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 0,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 1,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 0,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 0,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 0,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:16:53.791Z",
       "ok": true
     },
     {
