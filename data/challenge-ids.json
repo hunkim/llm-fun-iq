@@ -1,0 +1,180 @@
+{
+  "form": "kmiq-v1-20260826",
+  "source": "https://github.com/epoko77-ai/ai-iq-test",
+  "suite": "challenge",
+  "items": 28,
+  "strategy": "one item per family×difficulty stratum (7 families × 4 difficulties)",
+  "seed": "kmiq-v1-20260826-stratified",
+  "ids": [
+    "kmiq-1500df02d07fb999",
+    "kmiq-b8fc2eff8454430a",
+    "kmiq-dcb45d69b73f68c9",
+    "kmiq-149595de91b112ef",
+    "kmiq-1524fc49c3300f7a",
+    "kmiq-c4481fe4e98c2025",
+    "kmiq-b47701366f7f3c5d",
+    "kmiq-13c0e8ad1c9fd4a3",
+    "kmiq-8cff6010b6eaedf6",
+    "kmiq-20af152cda9b052c",
+    "kmiq-18100b2f79c15b2a",
+    "kmiq-ecf38f9f7cc26ebf",
+    "kmiq-187d400b4b33bdd0",
+    "kmiq-1bb622ff5c5d1f59",
+    "kmiq-f3d03c7c4f86321a",
+    "kmiq-543840c462610c07",
+    "kmiq-f5b5ee25ac1216a7",
+    "kmiq-8bed81f5c4d4a043",
+    "kmiq-5c06e27ab4a3c3ef",
+    "kmiq-f1f06e39bd25beda",
+    "kmiq-9e42e72e584df1a8",
+    "kmiq-a1d43409829d0201",
+    "kmiq-5028212e0e9fdadf",
+    "kmiq-57def6884cf9d20f",
+    "kmiq-c48abc3f367981ee",
+    "kmiq-1e4a3fcfaa2470c4",
+    "kmiq-c8748cbae272f0b1",
+    "kmiq-ac03a72877b5c342"
+  ],
+  "stratum": [
+    {
+      "id": "kmiq-1500df02d07fb999",
+      "family": "affine_steps",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-b8fc2eff8454430a",
+      "family": "affine_steps",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-dcb45d69b73f68c9",
+      "family": "affine_steps",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-149595de91b112ef",
+      "family": "affine_steps",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-1524fc49c3300f7a",
+      "family": "axis_binding",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-c4481fe4e98c2025",
+      "family": "axis_binding",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-b47701366f7f3c5d",
+      "family": "axis_binding",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-13c0e8ad1c9fd4a3",
+      "family": "axis_binding",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-8cff6010b6eaedf6",
+      "family": "commuting_transform",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-20af152cda9b052c",
+      "family": "commuting_transform",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-18100b2f79c15b2a",
+      "family": "commuting_transform",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-ecf38f9f7cc26ebf",
+      "family": "commuting_transform",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-187d400b4b33bdd0",
+      "family": "latin_cycle",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-1bb622ff5c5d1f59",
+      "family": "latin_cycle",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-f3d03c7c4f86321a",
+      "family": "latin_cycle",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-543840c462610c07",
+      "family": "latin_cycle",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-f5b5ee25ac1216a7",
+      "family": "modular_addition",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-8bed81f5c4d4a043",
+      "family": "modular_addition",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-5c06e27ab4a3c3ef",
+      "family": "modular_addition",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-f1f06e39bd25beda",
+      "family": "modular_addition",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-9e42e72e584df1a8",
+      "family": "union_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-a1d43409829d0201",
+      "family": "union_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-5028212e0e9fdadf",
+      "family": "union_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-57def6884cf9d20f",
+      "family": "union_overlay",
+      "difficulty": 4
+    },
+    {
+      "id": "kmiq-c48abc3f367981ee",
+      "family": "xor_overlay",
+      "difficulty": 1
+    },
+    {
+      "id": "kmiq-1e4a3fcfaa2470c4",
+      "family": "xor_overlay",
+      "difficulty": 2
+    },
+    {
+      "id": "kmiq-c8748cbae272f0b1",
+      "family": "xor_overlay",
+      "difficulty": 3
+    },
+    {
+      "id": "kmiq-ac03a72877b5c342",
+      "family": "xor_overlay",
+      "difficulty": 4
+    }
+  ]
+}

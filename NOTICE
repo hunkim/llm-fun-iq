@@ -1,0 +1,24 @@
+FunIQ
+=====
+
+This project is released under the MIT License (see LICENSE).
+
+Third-party materials
+---------------------
+
+Matrix-reasoning items in data/problems.json are taken from the public form
+`kmiq-v1-20260826` of AI IQ (fun) v1:
+
+    https://github.com/epoko77-ai/ai-iq-test
+
+Copyright (c) the AI IQ (fun) authors.
+Licensed under the MIT License.
+
+The scoring formula (AI-IQ-FUN-v1), answer-tag parser, family names, and
+entertainment labels follow that project's public specification. FunIQ is a
+leaderboard and eval harness around the published form; it is not the
+upstream project and does not claim authorship of the items.
+
+Evaluation traffic is routed through timelyrouter.ai (OpenAI-compatible
+Chat Completions). The FunIQ site layout is inspired by TigerBench
+(https://tigerbench.vercel.app/) but is not a copy of their copy or CSS.
