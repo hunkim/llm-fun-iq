@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-27T01:36:29.522Z",
+  "updated_at": "2026-08-27T01:37:56.278Z",
   "results": [
     {
       "id": "solar-pro2",
@@ -48,6 +48,51 @@
         }
       },
       "evaluated_at": "2026-08-27T01:23:06.634Z",
+      "ok": true
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "name": "Gemini 3.5 Flash-Lite",
+      "provider": "Google",
+      "ai_iq": 109,
+      "label": "규칙 해독자",
+      "correct": 93,
+      "total": 168,
+      "accuracy": 0.5536,
+      "format_failures": 0,
+      "avg_ms": 1541,
+      "tokens": 159471,
+      "family": {
+        "affine_steps": {
+          "correct": 14,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 14,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 11,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 15,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 14,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 11,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 14,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-27T01:37:56.278Z",
       "ok": true
     },
     {
