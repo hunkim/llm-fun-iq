@@ -12,6 +12,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://api.timelyrouter.ai";
 const TIMEOUT_MS = 90_000;
 const CONCURRENCY = 3;
+const MODEL_PARALLEL = 3;
 const RETRIES = 2;
 const FORMAT_ATTEMPTS = 3;
 const MAX_COMPLETION_TOKENS = 2048;
@@ -503,18 +504,23 @@ async function main() {
   }
   console.log(`evaluating ${targets.length}: ${targets.map((m) => m.id).join(", ")}`);
 
+  console.log(`model parallel ${Math.min(MODEL_PARALLEL, targets.length)} (item concurrency ${CONCURRENCY})`);
   const errors = [];
-  for (const m of targets) {
-    try {
-      const result = await evalModel(key, m, ordered);
-      upsertResult(board, result);
-      writeJson(boardPath, board);
-      refreshOg();
-    } catch (e) {
-      console.log(`model ${m.id} failed: ${e.message}`);
-      errors.push(m.id);
-    }
-  }
+  await pool(
+    targets,
+    async (m) => {
+      try {
+        const result = await evalModel(key, m, ordered);
+        upsertResult(board, result);
+        writeJson(boardPath, board);
+        refreshOg();
+      } catch (e) {
+        console.log(`model ${m.id} failed: ${e.message}`);
+        errors.push(m.id);
+      }
+    },
+    MODEL_PARALLEL,
+  );
   writeJson(boardPath, board);
   refreshOg();
   console.log(`\ndone. results=${board.results.length} updated_at=${board.updated_at}`);
