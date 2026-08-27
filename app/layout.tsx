@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ogMeta from "@/data/og-meta.json";
 import "./globals.css";
 
 const SITE_URL = "https://llm-fun-iq.vercel.app";
 const SITE_TITLE = "FunIQ — 재미로 환산한 AI IQ";
 const SITE_DESC =
+  ogMeta.description ||
   "같은 문항. 같은 규칙. 재미로 환산한 AI IQ. 행렬추론 챌린지 리더보드. 사람의 IQ·Mensa·일반 지능과 무관합니다.";
 
 export const metadata: Metadata = {

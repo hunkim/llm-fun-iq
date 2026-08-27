@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://api.timelyrouter.ai";
@@ -127,6 +128,16 @@ function readJson(p) {
 
 function writeJson(p, obj) {
   fs.writeFileSync(p, `${JSON.stringify(obj, null, 2)}\n`);
+}
+
+function refreshOg() {
+  const r = spawnSync("python3", [path.join(ROOT, "scripts/og.py")], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (r.status !== 0) {
+    console.log(`og.py skip: ${(r.stderr || r.stdout || r.error || "").toString().trim()}`);
+  }
 }
 
 function isServable(health, model) {
@@ -446,12 +457,14 @@ async function main() {
       const result = await evalModel(key, m, ordered);
       upsertResult(board, result);
       writeJson(boardPath, board);
+      refreshOg();
     } catch (e) {
       console.log(`model ${m.id} failed: ${e.message}`);
       errors.push(m.id);
     }
   }
   writeJson(boardPath, board);
+  refreshOg();
   console.log(`\ndone. results=${board.results.length} updated_at=${board.updated_at}`);
   if (errors.length) {
     console.log(`errors: ${errors.join(", ")}`);
