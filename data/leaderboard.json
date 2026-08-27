@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T00:54:15.052Z",
+  "updated_at": "2026-08-27T00:56:35.947Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -501,51 +501,6 @@
       "ok": true
     },
     {
-      "id": "solar-mini",
-      "name": "Solar Mini",
-      "provider": "Upstage",
-      "ai_iq": 98,
-      "label": "규칙 해독자",
-      "correct": 12,
-      "total": 28,
-      "accuracy": 0.4286,
-      "format_failures": 0,
-      "avg_ms": 457,
-      "tokens": 22503,
-      "family": {
-        "affine_steps": {
-          "correct": 1,
-          "total": 4
-        },
-        "axis_binding": {
-          "correct": 0,
-          "total": 4
-        },
-        "commuting_transform": {
-          "correct": 2,
-          "total": 4
-        },
-        "latin_cycle": {
-          "correct": 2,
-          "total": 4
-        },
-        "modular_addition": {
-          "correct": 2,
-          "total": 4
-        },
-        "union_overlay": {
-          "correct": 2,
-          "total": 4
-        },
-        "xor_overlay": {
-          "correct": 3,
-          "total": 4
-        }
-      },
-      "evaluated_at": "2026-08-27T00:51:24.866Z",
-      "ok": true
-    },
-    {
       "id": "gemini-3.1-flash-lite",
       "name": "Gemini 3.1 Flash-Lite",
       "provider": "Google",
@@ -588,6 +543,51 @@
         }
       },
       "evaluated_at": "2026-08-27T00:41:38.958Z",
+      "ok": true
+    },
+    {
+      "id": "solar-mini",
+      "name": "Solar Mini",
+      "provider": "Upstage",
+      "ai_iq": 94,
+      "label": "규칙 해독자",
+      "correct": 11,
+      "total": 28,
+      "accuracy": 0.3929,
+      "format_failures": 0,
+      "avg_ms": 448,
+      "tokens": 22279,
+      "family": {
+        "affine_steps": {
+          "correct": 1,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 0,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 1,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 2,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 2,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 2,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 3,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:56:35.937Z",
       "ok": true
     },
     {
