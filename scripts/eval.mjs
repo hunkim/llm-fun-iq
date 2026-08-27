@@ -20,6 +20,20 @@ const PREFERRED = [
   "gemini-3.5-flash-lite",
 ];
 
+const FORMAT_SYSTEM = [
+  "You are taking a multiple-choice test.",
+  "Reply with exactly one XML tag and no other text: <answer>X</answer>",
+  "where X is a single letter A, B, C, D, E, F, G, or H.",
+  "Do not copy the option body. Do not explain.",
+].join(" ");
+
+const FORMAT_SUFFIX = [
+  "",
+  "최종 출력은 아래 한 줄만. 보기 내용을 복사하지 마라.",
+  "<answer>X</answer>",
+  "X는 A,B,C,D,E,F,G,H 중 정답 한 글자.",
+].join("\n");
+
 function funIqScore(accuracy) {
   if (!(accuracy >= 0 && accuracy <= 1)) {
     throw new Error("accuracy must be between 0 and 1");
@@ -172,7 +186,10 @@ async function chatOnce(key, model, prompt) {
       method: "POST",
       body: {
         model,
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          { role: "system", content: FORMAT_SYSTEM },
+          { role: "user", content: `${prompt}${FORMAT_SUFFIX}` },
+        ],
         max_completion_tokens: MAX_COMPLETION_TOKENS,
         temperature: 0,
       },
@@ -181,6 +198,13 @@ async function chatOnce(key, model, prompt) {
     if (!res.ok) {
       const err = new Error(`HTTP ${res.status}`);
       err.status = res.status;
+      err.ms = ms;
+      throw err;
+    }
+    const finish = json?.choices?.[0]?.finish_reason;
+    if (finish === "refusal") {
+      const err = new Error("refusal");
+      err.status = 0;
       err.ms = ms;
       throw err;
     }
