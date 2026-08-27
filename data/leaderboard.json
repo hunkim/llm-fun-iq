@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T00:46:47.967Z",
+  "updated_at": "2026-08-27T00:49:57.000Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -723,6 +723,51 @@
         }
       },
       "evaluated_at": "2026-08-27T00:40:04.534Z",
+      "ok": true
+    },
+    {
+      "id": "glm-5.2",
+      "name": "GLM-5.2",
+      "provider": "Zhipu",
+      "ai_iq": 72,
+      "label": "패턴 탐색자",
+      "correct": 4,
+      "total": 28,
+      "accuracy": 0.1429,
+      "format_failures": 24,
+      "avg_ms": 19856,
+      "tokens": 72543,
+      "family": {
+        "affine_steps": {
+          "correct": 0,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 2,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 1,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 1,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 0,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 0,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 0,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:49:57.000Z",
       "ok": true
     },
     {
