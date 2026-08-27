@@ -1,0 +1,43 @@
+name: Daily FunIQ eval
+
+on:
+  schedule:
+    - cron: "0 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Evaluate models
+        env:
+          TIMELYROUTER_API_KEY: ${{ secrets.TIMELYROUTER_API_KEY }}
+        run: |
+          if [ -z "$TIMELYROUTER_API_KEY" ]; then
+            echo "TIMELYROUTER_API_KEY missing; skip eval"
+            exit 0
+          fi
+          node scripts/eval.mjs
+
+      - name: Commit leaderboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/leaderboard.json data/challenge-ids.json
+          if git diff --cached --quiet; then
+            echo "No leaderboard changes"
+          else
+            git commit -m "chore: update FunIQ challenge leaderboard"
+            git push
+          fi
