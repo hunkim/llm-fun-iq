@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T00:13:51.618Z",
+  "updated_at": "2026-08-27T00:15:20.203Z",
   "results": [
     {
       "id": "claude-opus-4-6",
@@ -48,6 +48,51 @@
         }
       },
       "evaluated_at": "2026-08-27T00:13:51.617Z",
+      "ok": true
+    },
+    {
+      "id": "claude-opus-4-7",
+      "name": "Claude Opus 4.7",
+      "provider": "Anthropic",
+      "ai_iq": 127,
+      "label": "매트릭스 마스터",
+      "correct": 21,
+      "total": 28,
+      "accuracy": 0.75,
+      "format_failures": 4,
+      "avg_ms": 8275,
+      "tokens": 45833,
+      "family": {
+        "affine_steps": {
+          "correct": 4,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 3,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 4,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 3,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 2,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 2,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 3,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:15:20.203Z",
       "ok": true
     },
     {
