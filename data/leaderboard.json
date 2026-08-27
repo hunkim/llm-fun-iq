@@ -3,7 +3,7 @@
   "suite": "challenge",
   "form": "kmiq-v1-20260826",
   "items": 28,
-  "updated_at": "2026-08-27T00:24:34.908Z",
+  "updated_at": "2026-08-27T00:39:38.785Z",
   "results": [
     {
       "id": "claude-opus-4-6",
@@ -499,6 +499,96 @@
       },
       "evaluated_at": "2026-08-27T00:00:58.547Z",
       "ok": true
+    },
+    {
+      "id": "deepseek-v4-flash-0731",
+      "name": "DeepSeek V4 Flash 0731",
+      "provider": "DeepSeek",
+      "ai_iq": 59,
+      "label": "워밍업 중",
+      "correct": 0,
+      "total": 28,
+      "accuracy": 0,
+      "format_failures": 0,
+      "avg_ms": 90004,
+      "tokens": 0,
+      "family": {
+        "affine_steps": {
+          "correct": 0,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 0,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 0,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 0,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 0,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 0,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 0,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:39:34.948Z",
+      "ok": false
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "provider": "DeepSeek",
+      "ai_iq": 59,
+      "label": "워밍업 중",
+      "correct": 0,
+      "total": 28,
+      "accuracy": 0,
+      "format_failures": 0,
+      "avg_ms": 401,
+      "tokens": 0,
+      "family": {
+        "affine_steps": {
+          "correct": 0,
+          "total": 4
+        },
+        "axis_binding": {
+          "correct": 0,
+          "total": 4
+        },
+        "commuting_transform": {
+          "correct": 0,
+          "total": 4
+        },
+        "latin_cycle": {
+          "correct": 0,
+          "total": 4
+        },
+        "modular_addition": {
+          "correct": 0,
+          "total": 4
+        },
+        "union_overlay": {
+          "correct": 0,
+          "total": 4
+        },
+        "xor_overlay": {
+          "correct": 0,
+          "total": 4
+        }
+      },
+      "evaluated_at": "2026-08-27T00:39:38.785Z",
+      "ok": false
     },
     {
       "id": "solar-mini",
