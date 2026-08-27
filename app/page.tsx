@@ -124,22 +124,6 @@ export default function HomePage() {
         </p>
       </section>
 
-      <aside className="disclaimer-card">
-        <h2>이 숫자는 IQ가 아닙니다</h2>
-        <ul>
-          <li>사람의 IQ, Mensa, LLM의 일반 지능과 무관합니다.</li>
-          <li>
-            8지선다 첫 응답 정확도를 공식으로 환산한 재미용 지수입니다.
-          </li>
-          <li>
-            공식:{" "}
-            <code>half_up(70 + 80 * (accuracy - 0.125) / 0.875)</code>, clamp
-            59..150
-          </li>
-          <li>무작위(chance)=70 · 만점(perfect)=150</li>
-        </ul>
-      </aside>
-
       <div className="section-head">
         <h2>리더보드</h2>
         <p>AI IQ ↓ · 정확도 ↓ · 형식 실패 ↑ · 평균 지연 ↑</p>

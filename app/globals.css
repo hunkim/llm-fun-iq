@@ -74,41 +74,9 @@ a:hover {
   margin: 0 auto;
 }
 
-.banner {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: color-mix(in srgb, var(--banner) 92%, black);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line-strong);
-}
 
-.banner-inner {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 10px 0;
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--cream-dim);
-}
 
-.banner-mark {
-  flex: none;
-  margin-top: 1px;
-  padding: 1px 7px;
-  border-radius: 999px;
-  background: var(--gold);
-  color: #1a1408;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-}
 
-.banner strong {
-  color: var(--cream);
-  font-weight: 600;
-}
 
 .site-header {
   display: flex;
@@ -215,34 +183,9 @@ a:hover {
   font-size: 14px;
 }
 
-.disclaimer-card {
-  margin: 18px 0 8px;
-  padding: 16px 18px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line-strong);
-  background: linear-gradient(180deg, rgba(228, 195, 106, 0.08), rgba(22, 25, 34, 0.85));
-}
 
-.disclaimer-card h2 {
-  margin: 0 0 8px;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
 
-.disclaimer-card ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--cream-dim);
-  font-size: 13.5px;
-}
 
-.disclaimer-card code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  color: var(--gold);
-}
 
 .section-head {
   display: flex;
@@ -475,6 +418,12 @@ details:not([open]) .toggle-open {
   margin: 0 0 8px;
 }
 
+.footer .fineprint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
 .about h1 {
   font-family: Syne, "IBM Plex Sans KR", sans-serif;
   font-size: 36px;
@@ -535,7 +484,4 @@ details:not([open]) .toggle-open {
     font-size: 28px;
   }
 
-  .banner-inner {
-    font-size: 12px;
-  }
 }

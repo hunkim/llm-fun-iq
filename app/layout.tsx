@@ -43,19 +43,6 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <div className="banner">
-          <div className="wrap banner-inner">
-            <span className="banner-mark">면책</span>
-            <div>
-              FunIQ의 AI IQ는 <strong>사람의 IQ / Mensa / LLM의 일반 지능과 무관</strong>
-              합니다. 8지선다 첫 응답 정확도를{" "}
-              <strong>
-                half_up(70 + 80 × (accuracy − 0.125) / 0.875)
-              </strong>
-              로 환산한 재미용 지수입니다. 무작위(chance) 70 · 만점 150 · 표시 59–150.
-            </div>
-          </div>
-        </div>
         <div className="wrap">
           <header className="site-header">
             <Link className="brand" href="/">
@@ -73,20 +60,23 @@ export default function RootLayout({
           {children}
           <footer className="footer">
             <p>
-              문항:{" "}
+              이 사이트는{" "}
               <a href="https://github.com/epoko77-ai/ai-iq-test">
                 epoko77-ai/ai-iq-test
-              </a>{" "}
-              · form <code>kmiq-v1-20260826</code> · MIT
+              </a>
+              의 공개 문항을 이용했습니다. form{" "}
+              <code>kmiq-v1-20260826</code> · MIT.
             </p>
             <p>
               평가:{" "}
-              <a href="https://timelyrouter.ai">timelyrouter.ai</a> Chat
-              Completions · 레이아웃 영감:{" "}
-              <a href="https://tigerbench.vercel.app/">TigerBench</a> (카피/CSS
-              복제 아님)
+              <a href="https://timelyrouter.ai">timelyrouter.ai</a> · 레이아웃
+              영감:{" "}
+              <a href="https://tigerbench.vercel.app/">TigerBench</a>
             </p>
-            <p>FunIQ 자체도 MIT. 재미용 벤치마크이며 공식 지능 검사가 아닙니다.</p>
+            <p className="fineprint">
+              FunIQ의 AI IQ는 사람의 IQ, Mensa, LLM의 일반 지능과 무관합니다.
+              8지선다 첫 응답 정확도를 재미로 환산한 지수입니다.
+            </p>
           </footer>
         </div>
       </body>
