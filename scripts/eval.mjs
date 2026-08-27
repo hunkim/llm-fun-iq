@@ -13,7 +13,10 @@ const API = "https://api.timelyrouter.ai";
 const TIMEOUT_MS = 90_000;
 const CONCURRENCY = 3;
 const RETRIES = 2;
+const FORMAT_ATTEMPTS = 3;
 const MAX_COMPLETION_TOKENS = 2048;
+const REASONING_MAX_TOKENS = 8192;
+const REASONING_EFFORT = { "solar-pro4": "high" };
 const PREFERRED = [
   "solar-pro4",
   "solar-pro3",
@@ -36,6 +39,9 @@ const FORMAT_SUFFIX = [
   '{"answer":"X"}',
   "X는 A,B,C,D,E,F,G,H 중 정답 한 글자. 보기 본문을 복사할 필요는 없습니다.",
 ].join("\n");
+
+const FORMAT_NUDGE =
+  '답 글자(A-H)가 없습니다. JSON만 출력하세요: {"answer":"X"}';
 
 function funIqScore(accuracy) {
   if (!(accuracy >= 0 && accuracy <= 1)) {
@@ -167,6 +173,20 @@ function extractContent(data) {
   return String(c || "");
 }
 
+function extractReasoning(data) {
+  const msg = data?.choices?.[0]?.message ?? {};
+  return String(msg.reasoning || msg.reasoning_content || msg.thinking || "");
+}
+
+function extraBodyFor(model) {
+  const effort = REASONING_EFFORT[model];
+  if (!effort) return {};
+  return {
+    reasoning_effort: effort,
+    max_completion_tokens: REASONING_MAX_TOKENS,
+  };
+}
+
 function tokenCount(usage) {
   if (!usage || typeof usage !== "object") return 0;
   if (typeof usage.total_tokens === "number") return usage.total_tokens;
@@ -204,20 +224,21 @@ function shouldRetry(err) {
   return s === 429 || (s >= 500 && s <= 599);
 }
 
-async function chatOnce(key, model, prompt) {
+async function chatOnce(key, model, messages) {
   const start = Date.now();
+  const extra = extraBodyFor(model);
+  const timeout = extra.reasoning_effort ? 180_000 : TIMEOUT_MS;
   try {
     const { res, text, json } = await fetchJson(`${API}/v1/chat/completions`, {
       key,
       method: "POST",
+      timeout,
       body: {
         model,
-        messages: [
-          { role: "system", content: FORMAT_SYSTEM },
-          { role: "user", content: `${prompt}${FORMAT_SUFFIX}` },
-        ],
-        max_completion_tokens: MAX_COMPLETION_TOKENS,
+        messages,
+        max_completion_tokens: extra.max_completion_tokens || MAX_COMPLETION_TOKENS,
         temperature: 0,
+        ...(extra.reasoning_effort ? { reasoning_effort: extra.reasoning_effort } : {}),
       },
     });
     const ms = Date.now() - start;
@@ -234,10 +255,18 @@ async function chatOnce(key, model, prompt) {
       err.ms = ms;
       throw err;
     }
-    return { content: extractContent(json), tokens: tokenCount(json?.usage), ms };
+    const content = extractContent(json);
+    const reasoning = extractReasoning(json);
+    return {
+      content,
+      reasoning,
+      parsed: parseAnswer(content) || parseAnswer(reasoning),
+      tokens: tokenCount(json?.usage),
+      ms,
+    };
   } catch (e) {
     if (e.name === "TimeoutError" || e.name === "AbortError") {
-      const err = new Error(`timeout ${TIMEOUT_MS / 1000}s`);
+      const err = new Error(`timeout ${timeout / 1000}s`);
       err.status = 0;
       err.ms = Date.now() - start;
       throw err;
@@ -247,11 +276,11 @@ async function chatOnce(key, model, prompt) {
   }
 }
 
-async function chatWithRetry(key, model, prompt) {
+async function chatWithRetry(key, model, messages) {
   let last;
   for (let attempt = 0; attempt <= RETRIES; attempt++) {
     try {
-      return await chatOnce(key, model, prompt);
+      return await chatOnce(key, model, messages);
     } catch (e) {
       last = e;
       if (attempt < RETRIES && shouldRetry(e)) {
@@ -264,6 +293,25 @@ async function chatWithRetry(key, model, prompt) {
     }
   }
   throw last;
+}
+
+async function completeAndParse(key, model, prompt) {
+  const messages = [
+    { role: "system", content: FORMAT_SYSTEM },
+    { role: "user", content: `${prompt}${FORMAT_SUFFIX}` },
+  ];
+  let last = { content: "", reasoning: "", parsed: null, tokens: 0, ms: 0 };
+  for (let attempt = 1; attempt <= FORMAT_ATTEMPTS; attempt++) {
+    const out = await chatWithRetry(key, model, messages);
+    last = { ...out, formatAttempts: attempt };
+    if (out.parsed) return last;
+    messages.push({ role: "assistant", content: out.content || "(empty)" });
+    messages.push({ role: "user", content: FORMAT_NUDGE });
+    if (attempt < FORMAT_ATTEMPTS) {
+      console.log(`  format retry ${attempt}/${FORMAT_ATTEMPTS - 1}`);
+    }
+  }
+  return last;
 }
 
 async function pool(items, worker, concurrency) {
@@ -326,12 +374,13 @@ async function evalModel(key, model, problems) {
     async (p, idx) => {
       const tag = String(idx + 1).padStart(2, "0");
       try {
-        const out = await chatWithRetry(key, id, p.prompt);
-        const parsed = parseAnswer(out.content);
+        const out = await completeAndParse(key, id, p.prompt);
+        const parsed = out.parsed;
         const correct = parsed === String(p.answer).toUpperCase();
         const formatFail = parsed == null;
+        const tries = out.formatAttempts && out.formatAttempts > 1 ? ` x${out.formatAttempts}` : "";
         console.log(
-          `  [${tag}/${problems.length}] ${p.family} ${formatFail ? "FMT" : parsed}${correct ? " +" : " -"} ${out.ms}ms`,
+          `  [${tag}/${problems.length}] ${p.family} ${formatFail ? "FMT" : parsed}${correct ? " +" : " -"} ${out.ms}ms${tries}`,
         );
         return {
           family: p.family,
