@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-27T04:11:40.730Z",
+  "updated_at": "2026-08-27T04:20:02.025Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -777,6 +777,52 @@
         }
       },
       "evaluated_at": "2026-08-27T03:35:48.239Z",
+      "ok": true
+    },
+    {
+      "id": "minimax-m3",
+      "name": "MiniMax M3",
+      "provider": "MiniMax",
+      "ai_iq": 104,
+      "label": "규칙 해독자",
+      "correct": 83,
+      "total": 168,
+      "accuracy": 0.494,
+      "format_failures": 9,
+      "refusals": 0,
+      "avg_ms": 17543,
+      "tokens": 420696,
+      "family": {
+        "affine_steps": {
+          "correct": 12,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 20,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 11,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 16,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 6,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 10,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 8,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-27T04:20:02.025Z",
       "ok": true
     },
     {
