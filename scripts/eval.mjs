@@ -392,11 +392,13 @@ async function evalModel(key, model, problems) {
           ok: true,
         };
       } catch (e) {
-        console.log(`  [${tag}/${problems.length}] ${p.family} ERR ${e.message}`);
+        const refused = e.message === "refusal";
+        console.log(`  [${tag}/${problems.length}] ${p.family} ${refused ? "REFUSE" : "ERR"} ${e.message}`);
         return {
           family: p.family,
           correct: false,
           formatFail: false,
+          refused,
           ms: e.ms || 0,
           tokens: 0,
           ok: false,
@@ -409,6 +411,7 @@ async function evalModel(key, model, problems) {
   const total = rows.length;
   const correct = rows.filter((r) => r.correct).length;
   const format_failures = rows.filter((r) => r.formatFail).length;
+  const refusals = rows.filter((r) => r.refused).length;
   const accuracy = total ? correct / total : 0;
   const avg_ms = total ? Math.round(rows.reduce((s, r) => s + (r.ms || 0), 0) / total) : 0;
   const tokens = rows.reduce((s, r) => s + (r.tokens || 0), 0);
@@ -424,11 +427,12 @@ async function evalModel(key, model, problems) {
     name,
     provider,
     ai_iq,
-    label: funIqLabel(ai_iq),
+    label: refusals === total ? "문항 거절" : funIqLabel(ai_iq),
     correct,
     total,
     accuracy: Math.round(accuracy * 10000) / 10000,
     format_failures,
+    refusals,
     avg_ms,
     tokens,
     family,
@@ -436,7 +440,7 @@ async function evalModel(key, model, problems) {
     ok: rows.every((r) => r.ok),
   };
   console.log(
-    `  -> AI IQ ${result.ai_iq} ${result.label}  ${correct}/${total}  fmt=${format_failures}  ok=${result.ok}`,
+    `  -> AI IQ ${result.ai_iq} ${result.label}  ${correct}/${total}  fmt=${format_failures}  refuse=${refusals}  ok=${result.ok}`,
   );
   return result;
 }

@@ -13,6 +13,7 @@ export type LeaderboardResult = {
   total: number;
   accuracy: number;
   format_failures: number;
+  refusals?: number;
   avg_ms: number;
   tokens?: number;
   family: Record<string, FamilyStats>;

@@ -39,9 +39,21 @@ function ModelCard({
               {result.correct}/{result.total}
             </b>
           </span>
-          <span>
-            형식 실패 <b>{result.format_failures}</b>
-          </span>
+          {(result.refusals ?? 0) > 0 ||
+          (!result.ok && (result.format_failures ?? 0) === 0 && result.correct < result.total) ? (
+            <span>
+              거절{" "}
+              <b>
+                {result.refusals ??
+                  result.total - result.correct - (result.format_failures ?? 0)}
+              </b>
+            </span>
+          ) : null}
+          {result.format_failures > 0 ? (
+            <span>
+              형식 실패 <b>{result.format_failures}</b>
+            </span>
+          ) : null}
           <span>
             평균 <b>{formatLatency(result.avg_ms)}</b>
           </span>
@@ -50,7 +62,6 @@ function ModelCard({
               토큰 <b>{tokens}</b>
             </span>
           ) : null}
-          {!result.ok ? <span>상태 <b>부분 실패</b></span> : null}
         </div>
         <div className="toggle">
           <span className="toggle-closed">▾ 규칙군 · 실행 시각</span>
