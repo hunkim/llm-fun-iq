@@ -7,8 +7,6 @@ export const PERFECT_SCORE = 150;
 export const MIN_SCORE = 59;
 export const MAX_SCORE = 150;
 
-const ANSWER_TAG = /<answer>\s*([A-H])\s*<\/answer>/gi;
-
 /** half_up(70 + 80 * (accuracy - 0.125) / 0.875), clamp 59..150 */
 export function funIqScore(accuracy: number): number {
   if (!(accuracy >= 0 && accuracy <= 1)) {
@@ -29,13 +27,26 @@ export function funIqLabel(score: number): string {
 }
 
 /**
- * Exactly one <answer>X</answer> with X in A–H.
- * Anything else is a format failure (not correct).
+ * Extract A–H from JSON, XML tags, or common LLM answer phrasings.
+ * Uses the last high-confidence letter (final answer after thinking).
  */
 export function parseAnswer(content: string): string | null {
-  if (typeof content !== "string" || !content) return null;
-  const matches = [...content.matchAll(new RegExp(ANSWER_TAG))];
-  return matches.length === 1 ? matches[0][1].toUpperCase() : null;
+  if (typeof content !== "string" || !content.trim()) return null;
+  const text = content.trim();
+  const found: string[] = [];
+  const add = (ch: string | undefined) => {
+    if (!ch) return;
+    const up = ch.toUpperCase();
+    if (/^[A-H]$/.test(up)) found.push(up);
+  };
+  for (const m of text.matchAll(/["']?answer["']?\s*:\s*["']?([A-Ha-h])["']?/g)) add(m[1]);
+  for (const m of text.matchAll(/<answer>\s*([A-Ha-h])\s*<\/answer>/gi)) add(m[1]);
+  for (const m of text.matchAll(/\b(?:final\s+)?answer\s*(?:is|=|:)\s*([A-Ha-h])\b/gi)) add(m[1]);
+  for (const m of text.matchAll(/정답\s*(?:은|는|:)?\s*([A-Ha-h])\b/g)) add(m[1]);
+  for (const m of text.matchAll(/(?:^|\n)\s*\(?([A-Ha-h])\)?\s*[\.\:\)](?:\s|$)/g)) add(m[1]);
+  if (found.length) return found[found.length - 1];
+  const only = text.match(/^\s*\(?([A-Ha-h])\)?\s*[.\s]*$/);
+  return only ? only[1].toUpperCase() : null;
 }
 
 export function parseProviderName(

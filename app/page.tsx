@@ -106,8 +106,8 @@ export default function HomePage() {
         <p className="tagline">같은 문항. 같은 규칙. 재미로 환산한 AI IQ.</p>
         <p className="lede">
           공개 form 168문항에서 층화한 챌린지 28문항. 모든 모델이 같은 문항을
-          같은 규칙으로 풉니다. 답은 정확히 하나의{" "}
-          <code>&lt;answer&gt;X&lt;/answer&gt;</code> (A–H)여야 합니다.
+          같은 규칙으로 풉니다. 답은 JSON <code>{`{"answer":"X"}`}</code>{" "}
+          (A–H)로 받고, 태그·문장 속 글자도 채점합니다.
         </p>
         <div className="meta-row">
           <span className="pill">{board.items}문항 챌린지</span>

@@ -46,9 +46,11 @@ export default function AboutPage() {
 
       <h2>채점</h2>
       <p>
-        응답에서 정확히 하나의 <code>&lt;answer&gt;X&lt;/answer&gt;</code>를
-        찾습니다. X는 A–H 중 하나여야 합니다. 태그가 없거나 두 개 이상이면
-        형식 실패이며 오답입니다. 느슨한 자연어 파싱은 하지 않습니다.
+        모델에게는 JSON <code>{`{"answer":"X"}`}</code> (X는 A–H)를 요청합니다.
+        채점은 지능을 보려는 것이라 형식을 엄격히 요구하지 않습니다. JSON,
+        <code>&lt;answer&gt;X&lt;/answer&gt;</code>, “정답은 B”, 보기 번호{" "}
+        <code>B.</code>처럼 흔히 쓰는 답에서도 마지막 글자를 읽습니다. 글자를
+        전혀 못 찾으면 형식 실패입니다.
       </p>
       <pre>{`AI IQ (fun) v1 = half_up(70 + 80 × (p − 0.125) / 0.875)
 표시 범위 = 59 … 150

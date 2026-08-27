@@ -21,17 +21,16 @@ const PREFERRED = [
 ];
 
 const FORMAT_SYSTEM = [
-  "You are taking a multiple-choice test.",
-  "Reply with exactly one XML tag and no other text: <answer>X</answer>",
-  "where X is a single letter A, B, C, D, E, F, G, or H.",
-  "Do not copy the option body. Do not explain.",
+  "You are solving a multiple-choice matrix puzzle.",
+  "Think if you want. Grade only the chosen letter A-H.",
+  'End with JSON: {"answer":"X"} where X is A, B, C, D, E, F, G, or H.',
 ].join(" ");
 
 const FORMAT_SUFFIX = [
   "",
-  "최종 출력은 아래 한 줄만. 보기 내용을 복사하지 마라.",
-  "<answer>X</answer>",
-  "X는 A,B,C,D,E,F,G,H 중 정답 한 글자.",
+  "마지막 줄은 JSON 한 개만 출력하세요.",
+  '{"answer":"X"}',
+  "X는 A,B,C,D,E,F,G,H 중 정답 한 글자. 보기 본문을 복사할 필요는 없습니다.",
 ].join("\n");
 
 function funIqScore(accuracy) {
@@ -52,9 +51,22 @@ function funIqLabel(score) {
 }
 
 function parseAnswer(content) {
-  if (typeof content !== "string" || !content) return null;
-  const matches = [...content.matchAll(/<answer>\s*([A-H])\s*<\/answer>/gi)];
-  return matches.length === 1 ? matches[0][1].toUpperCase() : null;
+  if (typeof content !== "string" || !content.trim()) return null;
+  const text = content.trim();
+  const found = [];
+  const add = (ch) => {
+    if (!ch) return;
+    const up = String(ch).toUpperCase();
+    if (/^[A-H]$/.test(up)) found.push(up);
+  };
+  for (const m of text.matchAll(/["']?answer["']?\s*:\s*["']?([A-Ha-h])["']?/g)) add(m[1]);
+  for (const m of text.matchAll(/<answer>\s*([A-Ha-h])\s*<\/answer>/gi)) add(m[1]);
+  for (const m of text.matchAll(/\b(?:final\s+)?answer\s*(?:is|=|:)\s*([A-Ha-h])\b/gi)) add(m[1]);
+  for (const m of text.matchAll(/정답\s*(?:은|는|:)?\s*([A-Ha-h])\b/g)) add(m[1]);
+  for (const m of text.matchAll(/(?:^|\n)\s*\(?([A-Ha-h])\)?\s*[\.\:\)](?:\s|$)/g)) add(m[1]);
+  if (found.length) return found[found.length - 1];
+  const only = text.match(/^\s*\(?([A-Ha-h])\)?\s*[.\s]*$/);
+  return only ? only[1].toUpperCase() : null;
 }
 
 function parseProviderName(rawName, fallbackId) {
