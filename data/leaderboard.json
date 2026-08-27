@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-27T04:20:02.025Z",
+  "updated_at": "2026-08-27T04:20:17.790Z",
   "results": [
     {
       "id": "gemini-3.1-pro-preview",
@@ -322,6 +322,52 @@
         }
       },
       "evaluated_at": "2026-08-27T02:07:42.681Z",
+      "ok": true
+    },
+    {
+      "id": "glm-5.3",
+      "name": "GLM-5.3",
+      "provider": "Zhipu",
+      "ai_iq": 133,
+      "label": "매트릭스 마스터",
+      "correct": 137,
+      "total": 168,
+      "accuracy": 0.8155,
+      "format_failures": 22,
+      "refusals": 0,
+      "avg_ms": 26193,
+      "tokens": 335800,
+      "family": {
+        "affine_steps": {
+          "correct": 23,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 24,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 21,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 23,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 17,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 16,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 13,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-27T04:20:17.790Z",
       "ok": true
     },
     {
