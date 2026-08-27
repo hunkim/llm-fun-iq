@@ -17,17 +17,30 @@ export function funIqScore(accuracy: number): number {
   return Math.max(MIN_SCORE, Math.min(MAX_SCORE, halfUp));
 }
 
-export function funIqLabel(score: number): string {
-  if (score >= 135) return "패턴 천재";
-  if (score >= 125) return "매트릭스 마스터";
-  if (score >= 110) return "추론 스페셜리스트";
-  if (score >= 90) return "규칙 해독자";
-  if (score >= 70) return "패턴 탐색자";
-  return "워밍업 중";
+export const FUN_IQ_LABELS: Record<string, { ko: string; en: string }> = {
+  genius: { ko: "패턴 천재", en: "Pattern genius" },
+  master: { ko: "매트릭스 마스터", en: "Matrix master" },
+  specialist: { ko: "추론 스페셜리스트", en: "Reasoning specialist" },
+  decoder: { ko: "규칙 해독자", en: "Rule decoder" },
+  explorer: { ko: "패턴 탐색자", en: "Pattern explorer" },
+  warming: { ko: "워밍업 중", en: "Warming up" },
+};
+
+export function funIqLabel(locale: "ko" | "en", score: number): string {
+  if (score >= 135) return FUN_IQ_LABELS.genius[locale];
+  if (score >= 125) return FUN_IQ_LABELS.master[locale];
+  if (score >= 110) return FUN_IQ_LABELS.specialist[locale];
+  if (score >= 90) return FUN_IQ_LABELS.decoder[locale];
+  if (score >= 70) return FUN_IQ_LABELS.explorer[locale];
+  return FUN_IQ_LABELS.warming[locale];
 }
 
-/**
- * Extract A–H from JSON, XML tags, or common LLM answer phrasings.
+/** legacy single-result form kept for data builds that call it directly */
+export function funIqLabelLegacy(score: number): string {
+  return funIqLabel("ko", score);
+}
+
+/** Extract A–H from JSON, XML tags, or common LLM answer phrasings.
  * Uses the last high-confidence letter (final answer after thinking).
  */
 export function parseAnswer(content: string): string | null {
@@ -39,11 +52,11 @@ export function parseAnswer(content: string): string | null {
     const up = ch.toUpperCase();
     if (/^[A-H]$/.test(up)) found.push(up);
   };
-  for (const m of text.matchAll(/["']?answer["']?\s*:\s*["']?([A-Ha-h])["']?/g)) add(m[1]);
+  for (const m of text.matchAll(/["']answer["']?:\s*["']?([A-Ha-h])["']?/g)) add(m[1]);
   for (const m of text.matchAll(/<answer>\s*([A-Ha-h])\s*<\/answer>/gi)) add(m[1]);
   for (const m of text.matchAll(/\b(?:final\s+)?answer\s*(?:is|=|:)\s*([A-Ha-h])\b/gi)) add(m[1]);
   for (const m of text.matchAll(/정답\s*(?:은|는|:)?\s*([A-Ha-h])\b/g)) add(m[1]);
-  for (const m of text.matchAll(/(?:^|\n)\s*\(?([A-Ha-h])\)?\s*[\.\:\)](?:\s|$)/g)) add(m[1]);
+  for (const m of text.matchAll(/(?:^|\n)\s*\(?([A-Ha-h])\)?\s*[.:\)](?:\s|$)/g)) add(m[1]);
   if (found.length) return found[found.length - 1];
   const only = text.match(/^\s*\(?([A-Ha-h])\)?\s*[.\s]*$/);
   return only ? only[1].toUpperCase() : null;

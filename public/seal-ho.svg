@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="144 114 224 284"><g fill="#f8f0dd" stroke="#f8f0dd" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ㅎ: tick and crossbar, left as plain letterform -->
+    <rect x="226" y="120" width="60" height="18" rx="9" stroke="none"/>
+    <rect x="168" y="154" width="176" height="20" rx="10" stroke="none"/>
+    <!-- ears, tucked behind the ㅇ so it reads as a head -->
+    <circle cx="216" cy="212" r="21" stroke="none"/>
+    <circle cx="296" cy="212" r="21" stroke="none"/>
+    <circle cx="216" cy="212" r="8" fill="#c23a1e" stroke="none"/>
+    <circle cx="296" cy="212" r="8" fill="#c23a1e" stroke="none"/>
+    <!-- ㅎ: the ㅇ, doubling as the face -->
+    <circle cx="256" cy="256" r="52" fill="none" stroke-width="20"/>
+    <circle cx="236" cy="246" r="8.5" stroke="none"/>
+    <circle cx="276" cy="246" r="8.5" stroke="none"/>
+    <path d="M246 266 h20 l-10 13 Z" stroke="none"/>
+    <!-- whiskers: short enough to stay out of the letterform -->
+    <g stroke-width="9" fill="none">
+      <path d="M192 246 L156 238"/>
+      <path d="M194 268 L158 280"/>
+      <path d="M320 246 L356 238"/>
+      <path d="M318 268 L354 280"/>
+    </g>
+    <!-- ㅗ -->
+    <rect x="246" y="332" width="20" height="44" rx="10" stroke="none"/>
+    <rect x="150" y="372" width="212" height="20" rx="10" stroke="none"/>
+  </g></svg>

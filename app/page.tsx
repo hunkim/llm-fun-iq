@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import leaderboardJson from "@/data/leaderboard.json";
-import { familyLabel } from "@/lib/families";
+import { useI18n } from "@/lib/i18n";
+import { familyLabelFor } from "@/lib/families";
+import { funIqLabel } from "@/lib/iq";
 import { competitionRanks, formatKst, formatLatency, formatTokens, rankResults } from "@/lib/rank";
 import type { Leaderboard, LeaderboardResult } from "@/lib/types";
 
@@ -7,80 +12,67 @@ const board = leaderboardJson as Leaderboard;
 
 const MEDALS = ["🥇", "🥈", "🥉"] as const;
 
-function ModelCard({
-  result,
-  rank,
-}: {
-  result: LeaderboardResult;
-  rank: number;
-}) {
+function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }) {
+  const { t, locale } = useI18n();
+  const [open, setOpen] = useState(rank === 1);
   const medal = rank <= 3 ? MEDALS[rank - 1] : null;
   const tokens = formatTokens(result.tokens);
   const families = Object.entries(result.family ?? {});
 
   return (
-    <details className={`card ${rank <= 3 ? "top" : ""}`}>
-      <summary className="summary">
-        <div className={`rank ${medal ? "medal" : ""}`} aria-label={`${rank}위`}>
-          {medal ?? rank}
+    <div className={`card ${rank <= 3 ? "top" : ""}`}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-3 sm:gap-4 p-3 sm:p-4 text-left cursor-pointer hover:bg-hanji/60 transition-colors"
+        aria-expanded={open}
+      >
+        <div className="w-10 sm:w-12 text-center shrink-0">
+          {medal ? (
+            <span className="text-2xl sm:text-3xl">{medal}</span>
+          ) : (
+            <span className="rank-medal font-black text-lg sm:text-xl text-ink-soft tabular-nums">{rank}</span>
+          )}
         </div>
-        <div className="identity">
-          <div className="name">{result.name}</div>
-          <div className="provider">{result.provider}</div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="font-display font-bold text-base sm:text-lg truncate">{result.name}</span>
+            <span className="text-[10px] font-bold text-white rounded-full px-2 py-0.5 bg-ink-soft">{result.provider}</span>
+          </div>
+          <div className="mt-1 text-xs text-ink-soft flex gap-3 flex-wrap tabular-nums">
+            <span>{t("correct")} <b>{result.correct}/{result.total}</b></span>
+            {result.refusals && result.refusals > 0 && (
+              <span>{t("refusals")} <b>{result.refusals}</b></span>
+            )}
+            {result.format_failures > 0 && (
+              <span className="text-persimmon font-semibold">{t("formatFailures")} <b>{result.format_failures}</b></span>
+            )}
+            <span>{t("avgLatency")} <b>{formatLatency(result.avg_ms)}</b></span>
+            {tokens && <span>{t("tokens")} <b>{tokens}</b></span>}
+          </div>
         </div>
-        <div className="score-block">
-          <div className="iq">{result.ai_iq}</div>
-          <span className="iq-unit">AI IQ</span>
-          <span className="chip">{result.label}</span>
+        <div className="text-right shrink-0">
+          <div className="font-display font-black text-2xl sm:text-3xl text-tiger-deep tabular-nums">
+            {result.ai_iq}
+          </div>
+          <div className="text-[11px] text-ink-soft">{t("AI IQ")}</div>
         </div>
-        <div className="stats">
-          <span>
-            정답 <b>
-              {result.correct}/{result.total}
-            </b>
-          </span>
-          {(result.refusals ?? 0) > 0 ||
-          (!result.ok && (result.format_failures ?? 0) === 0 && result.correct < result.total) ? (
-            <span>
-              거절{" "}
-              <b>
-                {result.refusals ??
-                  result.total - result.correct - (result.format_failures ?? 0)}
-              </b>
-            </span>
-          ) : null}
-          {result.format_failures > 0 ? (
-            <span className="stat-fmt" title="답 글자를 3번 요청했는데도 A–H를 파싱하지 못함">
-              3번 시도 후 형식 실패 <b>{result.format_failures}</b>
-            </span>
-          ) : null}
-          <span>
-            평균 <b>{formatLatency(result.avg_ms)}</b>
-          </span>
-          {tokens ? (
-            <span>
-              토큰 <b>{tokens}</b>
-            </span>
-          ) : null}
-        </div>
-        <div className="toggle">
-          <span className="toggle-closed">▾ 규칙군 · 실행 시각</span>
-          <span className="toggle-open">▴ 접기</span>
-        </div>
-      </summary>
-      <div className="expand">
-        <div className="expand-inner">
-          <h3>규칙군</h3>
+        <span className={`text-ink-soft transition-transform shrink-0 ${open ? "rotate-180" : ""}`}>▾</span>
+      </button>
+      {open && (
+        <div className="border-t-2 border-ink p-3 sm:p-4 bg-hanji/50">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <span className="chip">{funIqLabel(locale, result.ai_iq)}</span>
+            <span className="text-xs text-ink-soft">{t("AI IQ")} · {result.ai_iq}</span>
+          </div>
+          <h3 className="mb-2">{t("families")}</h3>
           <div className="families">
             {families.map(([fam, stats]) => {
               const pct = stats.total ? stats.correct / stats.total : 0;
               return (
                 <div className="fam" key={fam}>
                   <div>
-                    {familyLabel(fam)}{" "}
-                    <b>
-                      {stats.correct}/{stats.total}
-                    </b>
+                    {familyLabelFor(locale, fam)} 
+                    <b>{stats.correct}/{stats.total}</b>
                   </div>
                   <div className="bar">
                     <i style={{ width: `${Math.round(pct * 100)}%` }} />
@@ -90,20 +82,17 @@ function ModelCard({
             })}
           </div>
           <div className="meta-bits">
-            <span>
-              평가 시각 <b>{formatKst(result.evaluated_at)}</b>
-            </span>
-            <span>
-              모델 id <code>{result.id}</code>
-            </span>
+            <span>{t("evaluatedAt")} <b>{formatKst(result.evaluated_at)}</b></span>
+            <span>{t("modelId")} <code>{result.id}</code></span>
           </div>
         </div>
-      </div>
-    </details>
+      )}
+    </div>
   );
 }
 
 export default function HomePage() {
+  const { t, locale } = useI18n();
   const ranked = rankResults(board.results ?? []);
   const ranks = competitionRanks(ranked);
   const updated = formatKst(board.updated_at);
@@ -113,41 +102,39 @@ export default function HomePage() {
       <section className="hero">
         <h1>
           FunIQ
-          <span>행렬을 푸는 재미 IQ.</span>
+          <span>{t("siteNameKo")}</span>
         </h1>
-        <p className="tagline">같은 문항. 같은 규칙. 재미로 환산한 AI IQ.</p>
-        <p className="lede">
-          공개 form 168문항 전부. 모든 모델이 같은 문항을 같은 규칙으로 풉니다.
-          답은 JSON <code>{`{"answer":"X"}`}</code> (A–H)로 받고, 태그·문장 속
-          글자도 채점합니다.
-        </p>
+        <p className="tagline">{t("tagline")}</p>
+        <p className="lede">{t("heroSub")}</p>
         <div className="meta-row">
-          <span className="pill">{board.items}문항</span>
+          <span className="pill">{board.items}{t("items")}</span>
           <span className="pill">{ranked.length}개 모델</span>
-          <span className="pill">척도 {board.scale}</span>
-          <span className="pill">갱신 {updated}</span>
+          <span className="pill">{t("scale")} {board.scale}</span>
+          <span className="pill">{t("updated")} {updated}</span>
         </div>
         <p className="cta">
-          모델을 FunIQ에 올리고 싶다면{" "}
-          <a href="https://timelyrouter.ai" target="_blank" rel="noreferrer">
-            timelyrouter.ai
+          {t("ctaPre")}{" "}
+          <a
+            href="https://timelyrouter.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold text-tiger-deep underline decoration-tiger hover:text-persimmon"
+          >
+            {t("ctaLink")}
           </a>
-          에 등록하세요. 다음 날 아침 보드에 자동으로 오릅니다.
+          {t("ctaPost")}
         </p>
       </section>
 
       <div className="section-head">
-        <h2>리더보드</h2>
-        <p>AI IQ ↓ · 정확도 ↓ · 형식 실패 ↑ · 평균 지연 ↑</p>
+        <h2>{t("leaderboard")}</h2>
+        <p>{t("sortHint")}</p>
       </div>
 
       {ranked.length === 0 ? (
         <div className="empty">
-          <h2>아직 올라온 모델이 없습니다</h2>
-          <p>
-            일일 평가가 돌면 여기 순위가 채워집니다. 로컬에서는{" "}
-            <code>node scripts/eval.mjs</code> 로 챌린지를 실행하세요.
-          </p>
+          <h2>{t("emptyTitle")}</h2>
+          <p>{t("emptyBody")}</p>
         </div>
       ) : (
         <div className="list">

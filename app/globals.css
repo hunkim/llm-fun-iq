@@ -1,88 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Syne:wght@700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-hanji: #f8f0dd;
+  --color-hanji-deep: #efe2c4;
+  --color-hanji-line: #d9c69a;
+  --color-ink: #2a1f14;
+  --color-ink-soft: #6b5642;
+  --color-tiger: #e0731d;
+  --color-tiger-deep: #b85512;
+  --color-persimmon: #c23a1e;
+  --color-pine: #3f6d4e;
+  --color-gold: #c9a44a;
+  --font-serif-kr: var(--font-noto-serif-kr), "Noto Serif KR", serif;
+  --font-sans-kr: var(--font-noto-sans-kr), "Noto Sans KR", sans-serif;
+}
 
 :root {
-  --bg: #090b0f;
-  --bg-elev: #12141b;
-  --bg-card: #161922;
-  --bg-card-hover: #1b1f2a;
-  --line: rgba(243, 234, 210, 0.1);
-  --line-strong: rgba(228, 195, 106, 0.28);
-  --gold: #e4c36a;
-  --gold-2: #c9a44a;
-  --cream: #f3ead2;
-  --cream-dim: #cfc6ae;
-  --muted: #8e8778;
-  --fail: #e07a6a;
-  --ok: #8fcea0;
-  --chip: #241f16;
-  --banner: #1a1408;
-  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  --radius: 18px;
-  --max: 760px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
+  color-scheme: light;
 }
 
 html {
-  color-scheme: dark;
+  background: var(--color-hanji);
 }
 
 body {
-  font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", sans-serif;
-  color: var(--cream);
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(1200px 500px at 50% -80px, rgba(228, 195, 106, 0.09), transparent 60%),
-    linear-gradient(rgba(9, 11, 15, 0.88), rgba(9, 11, 15, 0.94)),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 27px,
-      rgba(243, 234, 210, 0.035) 27px 28px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 27px,
-      rgba(243, 234, 210, 0.035) 27px 28px
-    );
-  background-attachment: fixed;
-  line-height: 1.55;
+  font-family: var(--font-sans-kr);
+  color: var(--color-ink);
+  /* subtle hanji paper texture */
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 8%, rgba(224, 115, 29, 0.06), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 90%, rgba(63, 109, 78, 0.05), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(36, 26, 16, 0.012) 2px 3px),
+    repeating-linear-gradient(90deg, transparent 0 2px, rgba(36, 26, 16, 0.012) 2px 3px),
+    var(--color-hanji);
 }
 
-a {
-  color: var(--gold);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+.font-display {
+  font-family: var(--font-serif-kr);
 }
 
-a:hover {
-  color: var(--cream);
+/* red seal stamp (낙관) */
+.seal {
+  font-family: var(--font-serif-kr);
+  background: var(--color-persimmon);
+  color: var(--color-hanji);
+  transform: rotate(-4deg);
+  box-shadow: 2px 2px 0 rgba(36, 26, 16, 0.25);
+}
+
+.ink-card {
+  background: #fffdf6;
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px 0 rgba(36, 26, 16, 0.18);
+}
+
+.rank-medal {
+  font-family: var(--font-serif-kr);
 }
 
 .wrap {
-  width: min(var(--max), calc(100% - 32px));
+  width: min(760px, calc(100% - 32px));
   margin: 0 auto;
 }
-
-
-
-
 
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0 8px;
+  padding: 14px 0 6px;
 }
 
 .brand {
@@ -94,63 +79,65 @@ a:hover {
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
 }
 
 .brand-name {
-  font-family: Syne, "IBM Plex Sans KR", sans-serif;
-  font-weight: 800;
-  font-size: 22px;
+  font-family: var(--font-serif-kr);
+  font-weight: 900;
+  font-size: 24px;
   letter-spacing: -0.03em;
   line-height: 1;
 }
 
 .nav {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--color-ink-soft);
+  align-items: center;
 }
 
 .nav a {
-  color: var(--cream-dim);
+  color: var(--color-ink-soft);
   text-decoration: none;
+  font-weight: 500;
 }
 
 .nav a:hover,
 .nav a[aria-current="page"] {
-  color: var(--gold);
+  color: var(--color-tiger-deep);
 }
 
 .hero {
-  padding: 28px 0 18px;
+  padding: 24px 0 16px;
 }
 
 .hero h1 {
-  font-family: Syne, "IBM Plex Sans KR", sans-serif;
-  font-size: clamp(34px, 8vw, 64px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
-  margin: 0 0 14px;
+  font-family: var(--font-serif-kr);
+  font-size: clamp(32px, 7vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin: 0 0 10px;
 }
 
 .hero h1 span {
   display: block;
-  color: var(--gold);
+  color: var(--color-tiger-deep);
 }
 
 .tagline {
-  margin: 0 0 14px;
-  font-size: clamp(16px, 2.4vw, 20px);
+  margin: 0 0 10px;
+  font-size: clamp(15px, 2vw, 18px);
   font-weight: 600;
-  color: var(--cream);
+  color: var(--color-ink);
 }
 
 .lede {
   margin: 0;
-  color: var(--cream-dim);
+  color: var(--color-ink-soft);
   max-width: 42em;
 }
 
@@ -158,7 +145,7 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 18px 0 0;
+  margin: 14px 0 0;
 }
 
 .pill {
@@ -166,44 +153,43 @@ a:hover {
   align-items: center;
   gap: 6px;
   padding: 5px 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-hanji-line);
   border-radius: 999px;
   font-size: 12px;
-  color: var(--cream-dim);
-  background: rgba(22, 25, 34, 0.7);
+  color: var(--color-ink-soft);
+  background: rgba(248, 240, 221, 0.7);
 }
 
 .cta {
-  margin: 18px 0 0;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px dashed var(--line-strong);
-  background: rgba(228, 195, 106, 0.06);
-  color: var(--cream);
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--color-ink);
+  background: #fdf3ec;
+  color: var(--color-ink);
   font-size: 14px;
 }
-
-
-
-
 
 .section-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  margin: 28px 0 12px;
+  margin: 24px 0 12px;
 }
 
 .section-head h2 {
   margin: 0;
-  font-size: 18px;
+  font-family: var(--font-serif-kr);
+  font-size: 22px;
+  font-weight: 900;
   letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
 
 .section-head p {
   margin: 0;
-  color: var(--muted);
+  color: var(--color-ink-soft);
   font-size: 13px;
 }
 
@@ -215,20 +201,22 @@ a:hover {
 }
 
 .card {
-  border: 1px solid var(--line);
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--color-ink);
+  background: #fffdf6;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 rgba(36, 26, 16, 0.18);
   overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .card:hover {
-  border-color: var(--line-strong);
-  background: var(--bg-card-hover);
+  box-shadow: 6px 6px 0 rgba(36, 26, 16, 0.22);
+  transform: translateY(-1px);
 }
 
 .card.top {
-  border-color: var(--line-strong);
+  border-color: var(--color-persimmon);
+  box-shadow: 4px 4px 0 var(--color-persimmon);
 }
 
 .summary {
@@ -236,7 +224,7 @@ a:hover {
   grid-template-columns: 52px 1fr auto;
   gap: 8px 12px;
   align-items: center;
-  padding: 14px 16px 10px;
+  padding: 14px 16px 12px;
   cursor: pointer;
   list-style: none;
 }
@@ -246,26 +234,27 @@ a:hover {
 }
 
 .rank {
-  font-family: Syne, sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--muted);
+  font-family: var(--font-serif-kr);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--color-ink-soft);
   text-align: center;
 }
 
 .rank.medal {
-  font-size: 26px;
-  color: var(--gold);
+  font-size: 28px;
+  color: var(--color-tiger-deep);
 }
 
 .identity .name {
   font-weight: 700;
   font-size: 17px;
   letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
 
 .identity .provider {
-  color: var(--muted);
+  color: var(--color-ink-soft);
   font-size: 12.5px;
   margin-top: 1px;
 }
@@ -275,11 +264,11 @@ a:hover {
 }
 
 .iq {
-  font-family: Syne, sans-serif;
-  font-size: 34px;
-  font-weight: 800;
+  font-family: var(--font-serif-kr);
+  font-size: 36px;
+  font-weight: 900;
   line-height: 0.9;
-  color: var(--gold);
+  color: var(--color-tiger-deep);
   letter-spacing: -0.04em;
 }
 
@@ -287,8 +276,8 @@ a:hover {
   display: block;
   font-size: 10px;
   letter-spacing: 0.14em;
-  color: var(--muted);
-  font-family: "IBM Plex Sans KR", sans-serif;
+  color: var(--color-ink-soft);
+  font-family: var(--font-sans-kr);
   font-weight: 600;
   margin-top: 4px;
 }
@@ -298,10 +287,10 @@ a:hover {
   margin-top: 6px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: var(--chip);
-  color: var(--gold);
+  background: var(--color-persimmon);
+  color: var(--color-hanji);
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .stats {
@@ -310,28 +299,18 @@ a:hover {
   flex-wrap: wrap;
   gap: 8px 14px;
   padding: 0 16px 12px 80px;
-  color: var(--cream-dim);
+  color: var(--color-ink-soft);
   font-size: 12.5px;
 }
 
 .stats span b {
-  color: var(--cream);
-  font-weight: 600;
-}
-
-.stat-fmt {
-  color: #ff8a7a;
-  font-weight: 600;
-}
-
-.stat-fmt b {
-  color: #ff6b57;
+  color: var(--color-ink);
   font-weight: 700;
 }
 
 .expand {
   padding: 0 16px 16px 80px;
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--color-ink);
   margin-top: 0;
 }
 
@@ -342,9 +321,10 @@ a:hover {
 .expand h3 {
   margin: 0 0 8px;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-ink-soft);
   font-weight: 600;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .families {
@@ -356,15 +336,16 @@ a:hover {
 .fam {
   padding: 8px 10px;
   border-radius: 10px;
-  background: rgba(9, 11, 15, 0.45);
-  border: 1px solid var(--line);
+  background: rgba(248, 240, 221, 0.55);
+  border: 1px solid var(--color-hanji-line);
   font-size: 12.5px;
+  color: var(--color-ink-soft);
 }
 
 .fam .bar {
   height: 4px;
   border-radius: 99px;
-  background: #2a2d36;
+  background: #e3d2ab;
   margin-top: 6px;
   overflow: hidden;
 }
@@ -372,12 +353,12 @@ a:hover {
 .fam .bar > i {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--gold-2), var(--gold));
+  background: linear-gradient(90deg, var(--color-pine), var(--color-tiger));
 }
 
 .meta-bits {
   margin-top: 12px;
-  color: var(--muted);
+  color: var(--color-ink-soft);
   font-size: 12px;
   display: flex;
   flex-wrap: wrap;
@@ -385,7 +366,7 @@ a:hover {
 }
 
 .meta-bits code {
-  color: var(--cream-dim);
+  color: var(--color-ink);
   font-size: 12px;
 }
 
@@ -393,7 +374,7 @@ a:hover {
   grid-column: 1 / -1;
   padding: 0 16px 12px 80px;
   font-size: 12px;
-  color: var(--gold);
+  color: var(--color-tiger-deep);
 }
 
 details[open] .toggle-closed {
@@ -407,20 +388,21 @@ details:not([open]) .toggle-open {
 .empty {
   padding: 36px 20px;
   text-align: center;
-  border: 1px dashed var(--line);
-  border-radius: var(--radius);
-  color: var(--cream-dim);
+  border: 2px dashed var(--color-ink);
+  border-radius: 14px;
+  color: var(--color-ink-soft);
+  background: #fffdf6;
 }
 
 .empty h2 {
   margin: 0 0 8px;
-  color: var(--cream);
+  color: var(--color-ink);
 }
 
 .footer {
-  border-top: 1px solid var(--line);
-  padding: 28px 0 48px;
-  color: var(--muted);
+  border-top: 2px solid var(--color-ink);
+  padding: 24px 0 42px;
+  color: var(--color-ink-soft);
   font-size: 13px;
 }
 
@@ -429,35 +411,38 @@ details:not([open]) .toggle-open {
 }
 
 .footer .fineprint {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-ink-soft);
 }
 
 .about h1 {
-  font-family: Syne, "IBM Plex Sans KR", sans-serif;
-  font-size: 36px;
+  font-family: var(--font-serif-kr);
+  font-size: 34px;
   letter-spacing: -0.04em;
-  margin: 24px 0 12px;
+  margin: 22px 0 12px;
+  color: var(--color-ink);
 }
 
 .about h2 {
-  margin: 28px 0 8px;
-  font-size: 18px;
+  margin: 26px 0 8px;
+  font-family: var(--font-serif-kr);
+  font-size: 20px;
+  color: var(--color-ink);
 }
 
 .about p,
 .about li {
-  color: var(--cream-dim);
+  color: var(--color-ink-soft);
 }
 
 .about pre {
   overflow: auto;
-  padding: 14px;
-  border-radius: 12px;
-  background: #0e1016;
-  border: 1px solid var(--line);
-  color: var(--gold);
+  padding: 12px;
+  border-radius: 10px;
+  background: #f6eedd;
+  border: 1px solid var(--color-hanji-line);
+  color: var(--color-ink);
   font-size: 13px;
 }
 
@@ -471,12 +456,12 @@ details:not([open]) .toggle-open {
 .formula-table td {
   text-align: left;
   padding: 8px 10px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-hanji-line);
 }
 
 .formula-table th {
-  color: var(--muted);
-  font-weight: 500;
+  color: var(--color-ink-soft);
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {
@@ -487,11 +472,10 @@ details:not([open]) .toggle-open {
   }
 
   .summary {
-    grid-template-columns: 42px 1fr auto;
+    grid-template-columns: 44px 1fr auto;
   }
 
   .iq {
     font-size: 28px;
   }
-
 }

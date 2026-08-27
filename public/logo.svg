@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!--전통 한지 느낌의 배경 (Background)-->
+  <rect width="512" height="512" fill="#fcf8f0"/>
+  
+  <!--전통 액자 테두리 (Traditional Frame Border)-->
+  <rect x="15" y="15" width="482" height="482" fill="none" stroke="#6b4c35" stroke-width="6" rx="4"/>
+  <rect x="23" y="23" width="466" height="466" fill="none" stroke="#a07a58" stroke-width="2" rx="2"/>
+
+  <!--배경 요소: 붉은 해 (Traditional Red Sun)-->
+  <circle cx="410" cy="100" r="35" fill="#e04d4d" opacity="0.9"/>
+
+  <!--배경 요소: 소나무 (Minhwa Style Pine Tree)-->
+  <path d="M 15 90 Q 90 70 140 110" fill="none" stroke="#6b4c35" stroke-width="12" stroke-linecap="round"/>
+  <!--솔잎 묶음 1-->
+  <g stroke="#2b5c3b" stroke-width="5" stroke-linecap="round">
+    <line x1="80" y1="83" x2="55" y2="55"/>
+    <line x1="80" y1="83" x2="45" y2="70"/>
+    <line x1="80" y1="83" x2="48" y2="95"/>
+    <line x1="80" y1="83" x2="60" y2="110"/>
+    <line x1="80" y1="83" x2="80" y2="50"/>
+    <line x1="80" y1="83" x2="105" y2="55"/>
+    <line x1="80" y1="83" x2="115" y2="72"/>
+    <line x1="80" y1="83" x2="110" y2="95"/>
+  </g>
+  <!--솔잎 묶음 2-->
+  <g stroke="#2b5c3b" stroke-width="5" stroke-linecap="round">
+    <line x1="130" y1="105" x2="110" y2="75"/>
+    <line x1="130" y1="105" x2="100" y2="95"/>
+    <line x1="130" y1="105" x2="102" y2="115"/>
+    <line x1="130" y1="105" x2="115" y2="135"/>
+    <line x1="130" y1="105" x2="135" y2="70"/>
+    <line x1="130" y1="105" x2="155" y2="80"/>
+    <line x1="130" y1="105" x2="162" y2="100"/>
+    <line x1="130" y1="105" x2="155" y2="120"/>
+  </g>
+
+  <!--호랑이 귀 (Tiger Ears)-->
+  <!--왼쪽 귀-->
+  <g>
+    <path d="M 140 170 C 110 100, 210 90, 215 152 Z" fill="#f48c24" stroke="#1e1e1e" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M 155 160 C 135 115, 195 110, 198 148 Z" fill="#fffef0" stroke="#1e1e1e" stroke-width="6"/>
+  </g>
+  <!--오른쪽 귀-->
+  <g>
+    <path d="M 372 170 C 402 100, 302 90, 297 152 Z" fill="#f48c24" stroke="#1e1e1e" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M 357 160 C 377 115, 317 110, 314 148 Z" fill="#fffef0" stroke="#1e1e1e" stroke-width="6"/>
+  </g>
+
+  <!--호랑이 얼굴 기본 형태 (Tiger Head Base)-->
+  <!--익살스럽고 통통한 뺨을 가진 전통적인 형태-->
+  <path d="M 110 260 C 100 380, 150 440, 256 440 C 362 440, 412 380, 402 260 C 392 160, 320 140, 256 140 C 192 140, 120 160, 110 260 Z" fill="#f48c24" stroke="#1e1e1e" stroke-width="10" stroke-linejoin="round"/>
+
+  <!--눈 주변 하얀 패치 (White Eye Patches)-->
+  <ellipse cx="190" cy="230" rx="42" ry="42" fill="#fffef0" stroke="#1e1e1e" stroke-width="8"/>
+  <ellipse cx="322" cy="230" rx="42" ry="42" fill="#fffef0" stroke="#1e1e1e" stroke-width="8"/>
+
+  <!--상냥하고 둥근 백색 무동 (White Muzzle)-->
+  <path d="M 150 330 C 150 395, 200 425, 256 425 C 312 425, 362 395, 362 330 C 362 290, 310 295, 256 310 C 202 295, 150 290, 150 330 Z" fill="#fffef0" stroke="#1e1e1e" stroke-width="8" stroke-linejoin="round"/>
+
+  <!--왕방울 사팔뜨기 눈 (Comical Cross-eyes)-->
+  <!--왼쪽 눈동자-->
+  <circle cx="195" cy="230" r="28" fill="#f5be18" stroke="#1e1e1e" stroke-width="5"/>
+  <circle cx="206" cy="226" r="14" fill="#1e1e1e"/>
+  <circle cx="202" cy="220" r="5" fill="#ffffff"/>
+  <!--오른쪽 눈동자-->
+  <circle cx="317" cy="230" r="28" fill="#f5be18" stroke="#1e1e1e" stroke-width="5"/>
+  <circle cx="306" cy="226" r="14" fill="#1e1e1e"/>
+  <circle cx="310" cy="220" r="5" fill="#ffffff"/>
+
+  <!--익살스러운 굵은 눈썹 (Thick Eyebrows)-->
+  <path d="M 135 185 C 160 162, 210 162, 230 190" fill="none" stroke="#1e1e1e" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 377 185 C 352 162, 302 162, 282 190" fill="none" stroke="#1e1e1e" stroke-width="12" stroke-linecap="round"/>
+
+  <!--이마의 임금 왕 (王) 자 무늬 (Wang Character on Forehead)-->
+  <path d="M 210 155 Q 256 150 302 155" fill="none" stroke="#1e1e1e" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 225 175 Q 256 172 287 175" fill="none" stroke="#1e1e1e" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 200 198 Q 256 192 312 198" fill="none" stroke="#1e1e1e" stroke-width="14" stroke-linecap="round"/>
+  <line x1="256" y1="152" x2="256" y2="196" stroke="#1e1e1e" stroke-width="12" stroke-linecap="round"/>
+
+  <!--볼의 구불구불한 호랑이 줄무늬 (Calligraphic Cheek Stripes)-->
+  <!--왼쪽 볼 줄무늬-->
+  <path d="M 110 235 Q 145 242 175 250 Q 145 248 110 245 Z" fill="#1e1e1e"/>
+  <path d="M 108 275 Q 145 282 180 282 Q 145 288 108 285 Z" fill="#1e1e1e"/>
+  <path d="M 118 315 Q 145 320 170 315 Q 145 325 118 322 Z" fill="#1e1e1e"/>
+  <!--오른쪽 볼 줄무늬-->
+  <path d="M 402 235 Q 367 242 337 250 Q 367 248 402 245 Z" fill="#1e1e1e"/>
+  <path d="M 404 275 Q 367 282 332 282 Q 367 288 404 285 Z" fill="#1e1e1e"/>
+  <path d="M 394 315 Q 367 320 342 315 Q 367 325 394 322 Z" fill="#1e1e1e"/>
+
+  <!--머리 상단 측면 줄무늬 (Forehead Side Stripes)-->
+  <path d="M 145 195 Q 170 205 190 215 Q 165 212 140 203 Z" fill="#1e1e1e"/>
+  <path d="M 367 195 Q 342 205 322 215 Q 347 212 372 203 Z" fill="#1e1e1e"/>
+
+  <!--귀여운 분홍빛 볼터치 (Cute Cheek Blush)-->
+  <ellipse cx="155" cy="290" rx="18" ry="10" fill="#e04d4d" opacity="0.35"/>
+  <ellipse cx="357" cy="290" rx="18" ry="10" fill="#e04d4d" opacity="0.35"/>
+
+  <!--익살스러운 함지박 웃음과 이빨 (Goofy Smile, Tongue and Teeth)-->
+  <!--입 안쪽-->
+  <path d="M 205 335 C 205 395, 307 395, 307 335 Z" fill="#5c1a1a" stroke="#1e1e1e" stroke-width="8" stroke-linejoin="round"/>
+  <!--혓바닥-->
+  <path d="M 225 370 C 240 350, 272 350, 287 370 C 295 380, 275 395, 256 395 C 237 395, 217 380, 225 370 Z" fill="#e04d4d"/>
+  <!--뭉툭한 네모 아래윗니-->
+  <rect x="236" y="335" width="16" height="14" rx="2" fill="#fffef0" stroke="#1e1e1e" stroke-width="4"/>
+  <rect x="260" y="335" width="16" height="14" rx="2" fill="#fffef0" stroke="#1e1e1e" stroke-width="4"/>
+  <!--양끝의 귀여운 덧니-->
+  <path d="M 211 335 L 221 352 L 229 335 Z" fill="#fffef0" stroke="#1e1e1e" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M 301 335 L 291 352 L 283 335 Z" fill="#fffef0" stroke="#1e1e1e" stroke-width="4" stroke-linejoin="round"/>
+  <!--웃는 입꼬리 강조선-->
+  <path d="M 195 335 C 220 345, 292 345, 317 335" fill="none" stroke="#1e1e1e" stroke-width="8" stroke-linecap="round"/>
+
+  <!--복스러운 분홍색 코 (Bulbous Pink Nose)-->
+  <path d="M 230 255 L 282 255 C 295 255, 300 270, 290 285 L 268 312 C 262 318, 250 318, 244 312 L 222 285 C 212 270, 217 255, 230 255 Z" fill="#e04d4d" stroke="#1e1e1e" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M 240 262 C 240 272, 272 272, 272 262" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="244" cy="272" rx="6" ry="3" transform="rotate(-15 244 272)" fill="#ff8b8b" />
+
+  <!--콧수염 구멍 Dots-->
+  <circle cx="178" cy="325" r="3" fill="#1e1e1e"/>
+  <circle cx="188" cy="332" r="3" fill="#1e1e1e"/>
+  <circle cx="176" cy="340" r="3" fill="#1e1e1e"/>
+  <circle cx="334" cy="325" r="3" fill="#1e1e1e"/>
+  <circle cx="324" cy="332" r="3" fill="#1e1e1e"/>
+  <circle cx="336" cy="340" r="3" fill="#1e1e1e"/>
+
+  <!--사방으로 뻗친 멋진 흰 수염 (Long Bold Whiskers)-->
+  <!--수염 검은 테두리 (Shadow/Outline)-->
+  <g stroke="#1e1e1e" stroke-width="10" stroke-linecap="round" fill="none">
+    <!--왼쪽 수염-->
+    <path d="M 165 330 C 100 320, 55 295, 40 285"/>
+    <path d="M 160 345 C 95 355, 45 385, 25 420"/>
+    <path d="M 165 360 C 100 385, 55 435, 45 470"/>
+    <!--오른쪽 수염-->
+    <path d="M 347 330 C 412 320, 457 295, 472 285"/>
+    <path d="M 352 345 C 417 355, 467 385, 487 420"/>
+    <path d="M 347 360 C 412 385, 457 435, 467 470"/>
+  </g>
+  <!--수염 흰색 중심선-->
+  <g stroke="#fffef0" stroke-width="5" stroke-linecap="round" fill="none">
+    <!--왼쪽 수염-->
+    <path d="M 165 330 C 100 320, 55 295, 40 285"/>
+    <path d="M 160 345 C 95 355, 45 385, 25 420"/>
+    <path d="M 165 360 C 100 385, 55 435, 45 470"/>
+    <!--오른쪽 수염-->
+    <path d="M 347 330 C 412 320, 457 295, 472 285"/>
+    <path d="M 352 345 C 417 355, 467 385, 487 420"/>
+    <path d="M 347 360 C 412 385, 457 435, 467 470"/>
+  </g>
+
+  <!--턱밑 앙증맞은 털 장식 (Chin Tufts)-->
+  <path d="M 238 438 Q 238 455 244 440" fill="none" stroke="#1e1e1e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 256 439 Q 256 460 262 441" fill="none" stroke="#1e1e1e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 274 438 Q 274 455 280 440" fill="none" stroke="#1e1e1e" stroke-width="5" stroke-linecap="round"/>
+
+  <!--귀여운 조연: 귀 머리맡의 까치 (Silly/Cute Magpie)-->
+  <g id="korean-magpie">
+    <!--발가락-->
+    <path d="M 388 108 L 382 122" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 396 106 L 392 120" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round"/>
+    <!--꼬리 깃털-->
+    <path d="M 412 95 L 452 108 L 448 116 L 410 102 Z" fill="#1e1e1e" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round"/>
+    <!--몸통 (Black body)-->
+    <ellipse cx="400" cy="90" rx="18" ry="14" fill="#1e1e1e"/>
+    <!--흰색 배 패치 (White Belly)-->
+    <ellipse cx="394" cy="96" rx="11" ry="8" fill="#fffef0" transform="rotate(-15 394 96)"/>
+    <!--날개 (Wing)-->
+    <path d="M 390 92 Q 412 90 408 104 Q 394 104 390 92 Z" fill="#1f3c5c" stroke="#1e1e1e" stroke-width="3"/>
+    <path d="M 396 93 Q 406 94 402 101" fill="none" stroke="#fffef0" stroke-width="3" stroke-linecap="round"/>
+    <!--부리 (Yellow Beak)-->
+    <path d="M 384 88 L 366 94 L 383 97 Z" fill="#f5be18" stroke="#1e1e1e" stroke-width="3" stroke-linejoin="round"/>
+    <!--둥근 눈 (Comical Magpie Eye)-->
+    <circle cx="388" cy="87" r="4.5" fill="#fffef0" stroke="#1e1e1e" stroke-width="2"/>
+    <circle cx="388" cy="87" r="2" fill="#1e1e1e"/>
+  </g>
+</svg>

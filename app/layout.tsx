@@ -1,13 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
+import { LocaleProvider } from "@/lib/i18n";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import ogMeta from "@/data/og-meta.json";
 import "./globals.css";
 
+const notoSerifKr = Noto_Serif_KR({
+  weight: ["600", "900"],
+  subsets: ["latin"],
+  variable: "--font-noto-serif-kr",
+});
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-noto-sans-kr",
+});
+
 const SITE_URL = "https://llm-fun-iq.vercel.app";
 const SITE_TITLE = "FunIQ — 재미로 환산한 AI IQ";
-const SITE_DESC =
-  ogMeta.description ||
-  "같은 문항. 같은 규칙. 재미로 환산한 AI IQ. 행렬추론 챌린지 리더보드. 사람의 IQ·Mensa·일반 지능과 무관합니다.";
+const SITE_DESC = ogMeta.description || "같은 문항. 같은 규칙. 재미로 환산한 AI IQ. 행렬추론 챌린지 리더보드.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,77 +57,17 @@ export const metadata: Metadata = {
   },
 };
 
-function Logo() {
-  return (
-    <svg className="brand-mark" viewBox="0 0 34 34" aria-hidden>
-      <rect width="34" height="34" rx="8" fill="#161922" stroke="#e4c36a" strokeWidth="1.2" />
-      {[0, 1, 2].flatMap((r) =>
-        [0, 1, 2].map((c) => {
-          const missing = r === 2 && c === 2;
-          return missing ? null : (
-            <rect
-              key={`${r}-${c}`}
-              x={6 + c * 8}
-              y={6 + r * 8}
-              width="6"
-              height="6"
-              rx="1.2"
-              fill={r === 1 && c === 1 ? "#e4c36a" : "none"}
-              stroke="#e4c36a"
-              strokeWidth="1.1"
-            />
-          );
-        }),
-      )}
-      <text x="27" y="28" textAnchor="middle" fontSize="8" fill="#f3ead2">
-        ?
-      </text>
-    </svg>
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={`${notoSerifKr.variable} ${notoSansKr.variable}`}>
       <body>
-        <div className="wrap">
-          <header className="site-header">
-            <Link className="brand" href="/">
-              <Logo />
-              <span className="brand-name">FunIQ</span>
-            </Link>
-            <nav className="nav">
-              <Link href="/">리더보드</Link>
-              <Link href="/about">소개</Link>
-              <a href="https://timelyrouter.ai" target="_blank" rel="noreferrer">
-                timelyrouter.ai
-              </a>
-            </nav>
-          </header>
-          {children}
-          <footer className="footer">
-            <p>
-              이 사이트는{" "}
-              <a href="https://github.com/epoko77-ai/ai-iq-test">
-                epoko77-ai/ai-iq-test
-              </a>
-              의 공개 문항을 이용했습니다. form{" "}
-              <code>kmiq-v1-20260826</code> · MIT.
-            </p>
-            <p>
-              평가:{" "}
-              <a href="https://timelyrouter.ai">timelyrouter.ai</a> · 레이아웃
-              영감:{" "}
-              <a href="https://tigerbench.vercel.app/">TigerBench</a>
-            </p>
-            <p className="fineprint">
-              FunIQ의 AI IQ는 사람의 IQ, Mensa, LLM의 일반 지능과 무관합니다.
-              8지선다 첫 응답 정확도를 재미로 환산한 지수입니다.
-            </p>
-          </footer>
-        </div>
+        <LocaleProvider>
+          <Header />
+          <div className="wrap">{children}</div>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );
