@@ -363,7 +363,8 @@
         }
       },
       "evaluated_at": "2026-08-27T01:40:16.202Z",
-      "ok": false
+      "ok": false,
+      "refusals": 160
     }
   ]
 }
