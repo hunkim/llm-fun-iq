@@ -2,10 +2,44 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 
+const SITE_URL = "https://llm-fun-iq.vercel.app";
+const SITE_TITLE = "FunIQ — 재미로 환산한 AI IQ";
+const SITE_DESC =
+  "같은 문항. 같은 규칙. 재미로 환산한 AI IQ. 행렬추론 챌린지 리더보드. 사람의 IQ·Mensa·일반 지능과 무관합니다.";
+
 export const metadata: Metadata = {
-  title: "FunIQ — 재미로 환산한 AI IQ",
-  description:
-    "같은 문항. 같은 규칙. 재미로 환산한 AI IQ. 행렬추론 챌린지 리더보드. 사람의 IQ·Mensa·일반 지능과 무관합니다.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s · FunIQ" },
+  description: SITE_DESC,
+  applicationName: "FunIQ",
+  keywords: ["FunIQ", "AI IQ", "LLM", "leaderboard", "matrix reasoning"],
+  authors: [{ name: "FunIQ" }],
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: SITE_URL,
+    siteName: "FunIQ",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "FunIQ — 행렬을 푸는 재미 IQ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: ["/og.png"],
+  },
 };
 
 function Logo() {
