@@ -267,13 +267,8 @@ body {
   color: var(--color-ink);
 }
 
-.identity .name .provider-badge {
-  display: inline-block;
-  margin-top: 4px;
-}
-
 .identity .provider {
-  margin-top: 6px;
+  margin-top: 8px;
   color: var(--color-ink-soft);
   font-size: 12.5px;
   line-height: 1.4;
@@ -281,7 +276,7 @@ body {
 
 .score-block {
   text-align: right;
-  min-width: 60px;
+  min-width: 72px;
 }
 
 .iq {
@@ -310,7 +305,7 @@ body {
 }
 
 .expand-inner {
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 .expand h3 {
@@ -326,6 +321,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 8px;
+  margin-bottom: 10px;
 }
 
 .fam {
@@ -370,7 +366,7 @@ body {
 
 .chip {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 4px;
   padding: 2px 8px;
   border-radius: 999px;
   background: var(--color-persimmon);
@@ -382,6 +378,7 @@ body {
 @media (max-width: 640px) {
   .summary {
     grid-template-columns: 44px 1fr auto;
+    padding: 12px 14px 10px;
   }
 
   .iq {
@@ -393,102 +390,6 @@ body {
   }
 
   .expand {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-.empty {
-  padding: 36px 20px;
-  text-align: center;
-  border: 2px dashed var(--color-ink);
-  border-radius: 14px;
-  color: var(--color-ink-soft);
-  background: #fffdf6;
-}
-
-.empty h2 {
-  margin: 0 0 8px;
-  color: var(--color-ink);
-}
-
-.footer {
-  border-top: 2px solid var(--color-ink);
-  padding: 24px 0 42px;
-  color: var(--color-ink-soft);
-  font-size: 13px;
-}
-
-.footer p {
-  margin: 0 0 8px;
-}
-
-.footer .fineprint {
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--color-ink-soft);
-}
-
-.about h1 {
-  font-family: var(--font-serif-kr);
-  font-size: 34px;
-  letter-spacing: -0.04em;
-  margin: 22px 0 12px;
-  color: var(--color-ink);
-}
-
-.about h2 {
-  margin: 26px 0 8px;
-  font-family: var(--font-serif-kr);
-  font-size: 20px;
-  color: var(--color-ink);
-}
-
-.about p,
-.about li {
-  color: var(--color-ink-soft);
-}
-
-.about pre {
-  overflow: auto;
-  padding: 12px;
-  border-radius: 10px;
-  background: #f6eedd;
-  border: 1px solid var(--color-hanji-line);
-  color: var(--color-ink);
-  font-size: 13px;
-}
-
-.formula-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-}
-
-.formula-table th,
-.formula-table td {
-  text-align: left;
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--color-hanji-line);
-}
-
-.formula-table th {
-  color: var(--color-ink-soft);
-  font-weight: 600;
-}
-
-@media (max-width: 640px) {
-  .stats,
-  .expand,
-  .toggle {
-    padding-left: 16px;
-  }
-
-  .summary {
-    grid-template-columns: 44px 1fr auto;
-  }
-
-  .iq {
-    font-size: 28px;
+    padding: 12px 16px 16px 16px;
   }
 }
