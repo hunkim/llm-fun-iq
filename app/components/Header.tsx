@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/lib/i18n";
 
 export default function Header() {
   const { locale, setLocale, t } = useI18n();
+  const path = usePathname();
 
   return (
     <header className="w-full border-b-2 border-ink bg-hanji/80">
@@ -42,10 +44,12 @@ export default function Header() {
           </span>
         </Link>
         <nav className="nav">
-          <Link href="/" aria-current="page">
+          <Link href="/" aria-current={path === "/" ? "page" : undefined}>
             {t("leaderboard")}
           </Link>
-          <Link href="/about">{t("about")}</Link>
+          <Link href="/about" aria-current={path === "/about" ? "page" : undefined}>
+            {t("about")}
+          </Link>
           <a
             href="https://timelyrouter.ai"
             target="_blank"

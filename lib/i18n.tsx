@@ -40,6 +40,10 @@ export const dict = {
   modelId: { ko: "모델 id", en: "Model id" },
   scale: { ko: "척도", en: "Scale" },
   items: { ko: "문항", en: "Questions" },
+  modelsUnit: { ko: "개 모델", en: " models" },
+  incomplete: { ko: "일부 실패", en: "Incomplete" },
+  scoreBand: { ko: "구간", en: "Range" },
+  scoreLabel: { ko: "호칭", en: "Label" },
   updated: { ko: "갱신", en: "Updated" },
   sortHint: {
     ko: "AI IQ ↓ · 정확도 ↓ · 형식 실패 ↑ · 평균 지연 ↑",

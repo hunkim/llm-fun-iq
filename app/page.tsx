@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import leaderboardJson from "@/data/leaderboard.json";
 import { useI18n } from "@/lib/i18n";
 import { familyLabelFor } from "@/lib/families";
@@ -14,48 +13,67 @@ const MEDALS = ["🥇", "🥈", "🥉"] as const;
 
 function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }) {
   const { t, locale } = useI18n();
-  const [open, setOpen] = useState(false);
   const medal = rank <= 3 ? MEDALS[rank - 1] : null;
   const tokens = formatTokens(result.tokens);
   const families = Object.entries(result.family ?? {});
+  const incomplete = result.ok === false;
 
   return (
-    <div className={`card ${rank <= 3 ? "top" : ""}`}>
-      <details open={open} onToggle={() => setOpen(!open)}>
+    <li className={`card ${rank <= 3 ? "top" : ""}`}>
+      <details>
         <summary className="summary">
           <div className="rank">
             {medal ? (
-              <span className="text-2xl sm:text-3xl">{medal}</span>
-            ) : (
-              <span className="rank-medal font-black text-lg sm:text-xl text-ink-soft tabular-nums">
-                {rank}
+              <span className="rank-emoji" aria-hidden="true">
+                {medal}
               </span>
+            ) : (
+              <span className="rank-num">{rank}</span>
             )}
+            <span className="sr-only">
+              {t("rank")} {rank}
+            </span>
           </div>
           <div className="identity">
-            <div className="name">
-              <span className="font-display font-bold text-base sm:text-lg truncate block">
-                {result.name}
-              </span>
-              <span className="provider-badge text-[10px] font-bold text-white rounded-full px-2 py-0.5 bg-ink-soft inline-block mt-1 align-middle">
-                {result.provider}
-              </span>
-            </div>
-            <div className="provider">
-              <div className="text-xs text-ink-soft flex gap-3 flex-wrap tabular-nums">
-                <span>{t("correct")} <b>{result.correct}/{result.total}</b></span>
-                {result.refusals && result.refusals > 0 && (
-                  <span>{t("refusals")} <b>{result.refusals}</b></span>
-                )}
-                {result.format_failures > 0 && (
-                  <span className="text-persimmon font-semibold">
-                    {t("formatFailures")} <b>{result.format_failures}</b>
-                  </span>
-                )}
-                <span>{t("avgLatency")} <b>{formatLatency(result.avg_ms)}</b></span>
-                {tokens && <span>{t("tokens")} <b>{tokens}</b></span>}
-              </div>
-            </div>
+            <h3 className="name">
+              <span className="name-text">{result.name}</span>
+              <span className="provider-badge">{result.provider}</span>
+            </h3>
+            <ul className="stats">
+              <li>
+                <span className="k">{t("correct")}</span>
+                <b>
+                  {result.correct}/{result.total}
+                </b>
+              </li>
+              {result.refusals != null && result.refusals > 0 && (
+                <li>
+                  <span className="k">{t("refusals")}</span>
+                  <b>{result.refusals}</b>
+                </li>
+              )}
+              {result.format_failures > 0 && (
+                <li className="warn">
+                  <span className="k">{t("formatFailures")}</span>
+                  <b>{result.format_failures}</b>
+                </li>
+              )}
+              {incomplete && (
+                <li className="warn">
+                  <span className="k">{t("incomplete")}</span>
+                </li>
+              )}
+              <li>
+                <span className="k">{t("avgLatency")}</span>
+                <b>{formatLatency(result.avg_ms)}</b>
+              </li>
+              {tokens && (
+                <li>
+                  <span className="k">{t("tokens")}</span>
+                  <b>{tokens}</b>
+                </li>
+              )}
+            </ul>
           </div>
           <div className="score-block">
             <div className="iq">{result.ai_iq}</div>
@@ -64,40 +82,45 @@ function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }
         </summary>
         <div className="expand">
           <div className="expand-inner">
-            <div className="flex items-center justify-between gap-3 mb-2">
+            <div className="expand-head">
               <span className="chip">{funIqLabel(locale, result.ai_iq)}</span>
-              <span className="text-xs text-ink-soft">{t("AI IQ")} · {result.ai_iq}</span>
             </div>
-            <h3 className="mb-2">{t("families")}</h3>
+            <h4 className="expand-title">{t("families")}</h4>
             <div className="families">
               {families.map(([fam, stats]) => {
                 const pct = stats.total ? stats.correct / stats.total : 0;
                 return (
                   <div className="fam" key={fam}>
-                    <div>
-                      {familyLabelFor(locale, fam)}
-                      <b>{stats.correct}/{stats.total}</b>
+                    <div className="fam-row">
+                      <span>{familyLabelFor(locale, fam)}</span>
+                      <b>
+                        {stats.correct}/{stats.total}
+                      </b>
                     </div>
-                    <div className="bar">
-                      <i style={{ width: `${Math.round(pct * 100)}%` }} />
+                    <div className="bar" aria-hidden="true">
+                      <span style={{ width: `${Math.round(pct * 100)}%` }} />
                     </div>
                   </div>
                 );
               })}
             </div>
             <div className="meta-bits">
-              <span>{t("evaluatedAt")} <b>{formatKst(result.evaluated_at)}</b></span>
-              <span>{t("modelId")} <code>{result.id}</code></span>
+              <span>
+                {t("evaluatedAt")} <b>{formatKst(result.evaluated_at)}</b>
+              </span>
+              <span>
+                {t("modelId")} <code>{result.id}</code>
+              </span>
             </div>
           </div>
         </div>
       </details>
-    </div>
+    </li>
   );
 }
 
 export default function HomePage() {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   const ranked = rankResults(board.results ?? []);
   const ranks = competitionRanks(ranked);
   const updated = formatKst(board.updated_at);
@@ -112,10 +135,20 @@ export default function HomePage() {
         <p className="tagline">{t("tagline")}</p>
         <p className="lede">{t("heroSub")}</p>
         <div className="meta-row">
-          <span className="pill">{board.items}{t("items")}</span>
-          <span className="pill">{ranked.length}개 모델</span>
-          <span className="pill">{t("scale")} {board.scale}</span>
-          <span className="pill">{t("updated")} {updated}</span>
+          <span className="pill">
+            {board.items}
+            {t("items")}
+          </span>
+          <span className="pill">
+            {ranked.length}
+            {t("modelsUnit")}
+          </span>
+          <span className="pill">
+            {t("scale")} {board.scale}
+          </span>
+          <span className="pill">
+            {t("updated")} {updated}
+          </span>
         </div>
         <p className="cta">
           <span className="cta-inner">
@@ -124,15 +157,13 @@ export default function HomePage() {
               href="https://timelyrouter.ai"
               target="_blank"
               rel="noreferrer"
-              className="cta-link font-bold text-tiger-deep underline decoration-tiger hover:text-persimmon focus:outline-none focus:ring-2 focus:ring-tiger-deep focus:ring-offset-2 focus:ring-offset-hanji"
+              className="cta-link"
             >
               {t("ctaLink")}
             </a>
             <span className="cta-label">{t("ctaPost")}</span>
           </span>
-          <span className="designed-by">
-            Designed by Solar Pro 4
-          </span>
+          <span className="designed-by">Designed by Solar Pro 4</span>
         </p>
       </section>
 
@@ -147,11 +178,11 @@ export default function HomePage() {
           <p>{t("emptyBody")}</p>
         </div>
       ) : (
-        <div className="list">
+        <ol className="list">
           {ranked.map((result, i) => (
             <ModelCard key={result.id} result={result} rank={ranks[i]} />
           ))}
-        </div>
+        </ol>
       )}
     </main>
   );

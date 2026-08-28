@@ -51,19 +51,19 @@ perfect p=1     → 150`}
       <table className="formula-table">
         <thead>
           <tr>
-            <th>{t("score")}</th>
-            <th>{t("score")}</th>
+            <th>{t("scoreBand")}</th>
+            <th>{t("scoreLabel")}</th>
           </tr>
         </thead>
         <tbody>
           {labelRows.map((row) => (
             <tr key={row.key}>
-              <td>{typeof row.min === "number" ? `≥ ${row.min}` : "그 외"}</td>
+              <td>{typeof row.min === "number" ? `≥ ${row.min}` : (locale === "ko" ? "그 외" : "other")}</td>
               <td>{funIqLabel(locale, row.min)}</td>
             </tr>
           ))}
           <tr key="warming">
-            <td>그 외</td>
+            <td>{locale === "ko" ? "그 외" : "other"}</td>
             <td>{funIqLabel(locale, 0)}</td>
           </tr>
         </tbody>
