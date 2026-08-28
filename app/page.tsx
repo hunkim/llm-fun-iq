@@ -14,7 +14,7 @@ const MEDALS = ["🥇", "🥈", "🥉"] as const;
 
 function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }) {
   const { t, locale } = useI18n();
-  const [open, setOpen] = useState(rank === 1);
+  const [open, setOpen] = useState(false);
   const medal = rank <= 3 ? MEDALS[rank - 1] : null;
   const tokens = formatTokens(result.tokens);
   const families = Object.entries(result.family ?? {});

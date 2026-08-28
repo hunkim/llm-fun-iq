@@ -275,6 +275,8 @@ body {
   cursor: pointer;
   list-style: none;
   transition: background-color 0.15s ease;
+  /* 열린/닫힌 상태 모두 동일한 최소 높이 유지 → 레이아웃 시프트 완화 */
+  min-height: 56px;
 }
 
 .summary::-webkit-details-marker {
@@ -287,6 +289,7 @@ body {
 
 .summary[open] {
   border-bottom: 2px solid var(--color-ink);
+  min-height: 56px;
 }
 
 .rank {
