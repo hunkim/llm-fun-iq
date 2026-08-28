@@ -37,7 +37,7 @@ function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }
               <span className="font-display font-bold text-base sm:text-lg truncate block">
                 {result.name}
               </span>
-              <span className="text-[10px] font-bold text-white rounded-full px-2 py-0.5 bg-ink-soft inline-block mt-1 align-middle">
+              <span className="provider-badge text-[10px] font-bold text-white rounded-full px-2 py-0.5 bg-ink-soft inline-block mt-1 align-middle">
                 {result.provider}
               </span>
             </div>
@@ -118,16 +118,21 @@ export default function HomePage() {
           <span className="pill">{t("updated")} {updated}</span>
         </div>
         <p className="cta">
-          {t("ctaPre")}{" "}
-          <a
-            href="https://timelyrouter.ai"
-            target="_blank"
-            rel="noreferrer"
-            className="font-bold text-tiger-deep underline decoration-tiger hover:text-persimmon"
-          >
-            {t("ctaLink")}
-          </a>
-          {t("ctaPost")}
+          <span className="cta-inner">
+            <span className="cta-label">{t("ctaPre")}</span>
+            <a
+              href="https://timelyrouter.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="cta-link font-bold text-tiger-deep underline decoration-tiger hover:text-persimmon focus:outline-none focus:ring-2 focus:ring-tiger-deep focus:ring-offset-2 focus:ring-offset-hanji"
+            >
+              {t("ctaLink")}
+            </a>
+            <span className="cta-label">{t("ctaPost")}</span>
+          </span>
+          <span className="designed-by">
+            Designed by Solar Pro 4
+          </span>
         </p>
       </section>
 
