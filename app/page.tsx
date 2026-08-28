@@ -128,10 +128,7 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero">
-        <h1>
-          FunIQ
-          <span>{t("siteNameKo")}</span>
-        </h1>
+        <h1>FunIQ</h1>
         <p className="tagline">{t("tagline")}</p>
         <p className="lede">{t("heroSub")}</p>
         <div className="meta-row">
