@@ -3,7 +3,7 @@
   "suite": "full",
   "form": "kmiq-v1-20260826",
   "items": 168,
-  "updated_at": "2026-08-28T11:54:45.326Z",
+  "updated_at": "2026-08-29T01:56:39.982Z",
   "results": [
     {
       "id": "gpt-5.6-sol",
@@ -737,6 +737,53 @@
       },
       "evaluated_at": "2026-08-27T05:00:23.786Z",
       "ok": true
+    },
+    {
+      "id": "solar-mini4-preview",
+      "name": "Solar Mini 4 Preview",
+      "provider": "Upstage",
+      "ai_iq": 126,
+      "label": "매트릭스 마스터",
+      "correct": 124,
+      "total": 168,
+      "accuracy": 0.7381,
+      "format_failures": 0,
+      "refusals": 0,
+      "avg_ms": 94490,
+      "family": {
+        "affine_steps": {
+          "correct": 22,
+          "total": 24
+        },
+        "axis_binding": {
+          "correct": 20,
+          "total": 24
+        },
+        "commuting_transform": {
+          "correct": 20,
+          "total": 24
+        },
+        "latin_cycle": {
+          "correct": 23,
+          "total": 24
+        },
+        "modular_addition": {
+          "correct": 11,
+          "total": 24
+        },
+        "union_overlay": {
+          "correct": 17,
+          "total": 24
+        },
+        "xor_overlay": {
+          "correct": 11,
+          "total": 24
+        }
+      },
+      "evaluated_at": "2026-08-29T01:56:39.974Z",
+      "ok": true,
+      "route": "upstage",
+      "upstage_model": "solar-mini4-preview"
     },
     {
       "id": "solar-pro2",
@@ -1605,53 +1652,6 @@
       },
       "evaluated_at": "2026-08-27T03:54:30.638Z",
       "ok": true
-    },
-    {
-      "id": "solar-mini4-preview",
-      "name": "Solar Mini 4 Preview",
-      "provider": "Upstage",
-      "ai_iq": 79,
-      "label": "패턴 탐색자",
-      "correct": 37,
-      "total": 168,
-      "accuracy": 0.2202,
-      "format_failures": 0,
-      "refusals": 0,
-      "avg_ms": 94490,
-      "family": {
-        "affine_steps": {
-          "correct": 2,
-          "total": 24
-        },
-        "axis_binding": {
-          "correct": 9,
-          "total": 24
-        },
-        "commuting_transform": {
-          "correct": 1,
-          "total": 24
-        },
-        "latin_cycle": {
-          "correct": 6,
-          "total": 24
-        },
-        "modular_addition": {
-          "correct": 2,
-          "total": 24
-        },
-        "union_overlay": {
-          "correct": 10,
-          "total": 24
-        },
-        "xor_overlay": {
-          "correct": 7,
-          "total": 24
-        }
-      },
-      "evaluated_at": "2026-08-28T11:54:45.317Z",
-      "ok": true,
-      "route": "upstage",
-      "upstage_model": "solar-mini4-preview"
     },
     {
       "id": "qwen3.6-35b-a3b",
