@@ -9,27 +9,21 @@ import type { Leaderboard, LeaderboardResult } from "@/lib/types";
 
 const board = leaderboardJson as Leaderboard;
 
-const MEDALS = ["🥇", "🥈", "🥉"] as const;
-
 function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }) {
   const { t, locale } = useI18n();
-  const medal = rank <= 3 ? MEDALS[rank - 1] : null;
   const tokens = formatTokens(result.tokens);
   const families = Object.entries(result.family ?? {});
   const incomplete = result.ok === false;
+  const accuracyPct = result.total ? (result.correct / result.total) * 100 : 0;
+  const hasFlags =
+    (result.refusals != null && result.refusals > 0) || result.format_failures > 0 || incomplete;
 
   return (
     <li className={`card ${rank <= 3 ? "top" : ""}`}>
       <details>
         <summary className="summary">
-          <div className="rank">
-            {medal ? (
-              <span className="rank-emoji" aria-hidden="true">
-                {medal}
-              </span>
-            ) : (
-              <span className="rank-num">{rank}</span>
-            )}
+          <div className="rank-cell">
+            <span className={`rank-badge ${rank <= 3 ? `r${rank}` : ""}`}>{rank}</span>
             <span className="sr-only">
               {t("rank")} {rank}
             </span>
@@ -39,79 +33,77 @@ function ModelCard({ result, rank }: { result: LeaderboardResult; rank: number }
               <span className="name-text">{result.name}</span>
               <span className="provider-badge">{result.provider}</span>
             </h3>
-            <ul className="stats">
-              <li>
-                <span className="k">{t("correct")}</span>
-                <b>
-                  {result.correct}/{result.total}
-                </b>
-              </li>
-              {result.refusals != null && result.refusals > 0 && (
-                <li>
-                  <span className="k">{t("refusals")}</span>
-                  <b>{result.refusals}</b>
-                </li>
-              )}
-              {result.format_failures > 0 && (
-                <li className="warn">
-                  <span className="k">{t("formatFailures")}</span>
-                  <b>{result.format_failures}</b>
-                </li>
-              )}
-              {incomplete && (
-                <li className="warn">
-                  <span className="k">{t("incomplete")}</span>
-                </li>
-              )}
-              <li>
-                <span className="k">{t("avgLatency")}</span>
-                <b>{formatLatency(result.avg_ms)}</b>
-              </li>
-              {tokens && (
-                <li>
-                  <span className="k">{t("tokens")}</span>
-                  <b>{tokens}</b>
-                </li>
-              )}
-            </ul>
+            {hasFlags && (
+              <div className="flags">
+                {result.refusals != null && result.refusals > 0 && (
+                  <span className="flag">
+                    {t("refusals")} {result.refusals}
+                  </span>
+                )}
+                {result.format_failures > 0 && (
+                  <span className="flag">
+                    {t("formatFailures")} {result.format_failures}
+                  </span>
+                )}
+                {incomplete && <span className="flag">{t("incomplete")}</span>}
+              </div>
+            )}
+          </div>
+          <div className="acc-cell">
+            <div className="acc-num">
+              <b>
+                {result.correct}/{result.total}
+              </b>
+              <span className="pct">{accuracyPct.toFixed(1)}%</span>
+            </div>
+            <div className="acc-bar" aria-hidden="true">
+              <span style={{ width: `${accuracyPct}%` }} />
+            </div>
+          </div>
+          <div className="lat-cell">
+            <span className="lat-label">{t("avgLatency")} </span>
+            {formatLatency(result.avg_ms)}
           </div>
           <div className="score-block">
-            <div className="iq">{result.ai_iq}</div>
-            <div className="iq-unit">{t("AI IQ")}</div>
+            <span className="iq">{result.ai_iq}</span>
+            <span className="chev" aria-hidden="true" />
           </div>
         </summary>
         <div className="expand">
-          <div className="expand-inner">
-            <div className="expand-head">
-              <span className="chip">{funIqLabel(locale, result.ai_iq)}</span>
-            </div>
-            <h4 className="expand-title">{t("families")}</h4>
-            <div className="families">
-              {families.map(([fam, stats]) => {
-                const pct = stats.total ? stats.correct / stats.total : 0;
-                return (
-                  <div className="fam" key={fam}>
-                    <div className="fam-row">
-                      <span>{familyLabelFor(locale, fam)}</span>
-                      <b>
-                        {stats.correct}/{stats.total}
-                      </b>
-                    </div>
-                    <div className="bar" aria-hidden="true">
-                      <span style={{ width: `${Math.round(pct * 100)}%` }} />
-                    </div>
+          <div className="expand-head">
+            <span className="chip">{funIqLabel(locale, result.ai_iq)}</span>
+          </div>
+          <h4 className="expand-title">{t("families")}</h4>
+          <div className="families">
+            {families.map(([fam, stats]) => {
+              const pct = stats.total ? stats.correct / stats.total : 0;
+              return (
+                <div className="fam" key={fam}>
+                  <div className="fam-row">
+                    <span>{familyLabelFor(locale, fam)}</span>
+                    <b>
+                      {stats.correct}/{stats.total}
+                    </b>
                   </div>
-                );
-              })}
-            </div>
-            <div className="meta-bits">
+                  <div className="bar" aria-hidden="true">
+                    <span style={{ width: `${Math.round(pct * 100)}%` }} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="meta-bits">
+            {tokens && (
               <span>
-                {t("evaluatedAt")} <b>{formatKst(result.evaluated_at)}</b>
+                {t("tokens")} <b>{tokens}</b>
               </span>
-              <span>
-                {t("modelId")} <code>{result.id}</code>
-              </span>
-            </div>
+            )}
+            <span>
+              {t("evaluatedAt")} <b>{formatKst(result.evaluated_at)}</b>
+            </span>
+            <span>
+              {t("modelId")} <code>{result.id}</code>
+            </span>
           </div>
         </div>
       </details>
@@ -128,40 +120,37 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero">
+        <p className="eyebrow">{t("tagline")}</p>
         <h1>FunIQ</h1>
-        <p className="tagline">{t("tagline")}</p>
         <p className="lede">{t("heroSub")}</p>
-        <div className="meta-row">
-          <span className="pill">
-            {board.items}
-            {t("items")}
-          </span>
-          <span className="pill">
-            {ranked.length}
-            {t("modelsUnit")}
-          </span>
-          <span className="pill">
-            {t("scale")} {board.scale}
-          </span>
-          <span className="pill">
-            {t("updated")} {updated}
-          </span>
+        <div className="stat-band">
+          <div className="stat">
+            <b>{board.items}</b>
+            <span>{t("items")}</span>
+          </div>
+          <div className="stat">
+            <b>{ranked.length}</b>
+            <span>{t("modelsLabel")}</span>
+          </div>
+          <div className="stat stat-small">
+            <b>{board.scale}</b>
+            <span>{t("scale")}</span>
+          </div>
+          <div className="stat stat-small">
+            <b>{updated}</b>
+            <span>{t("updated")}</span>
+          </div>
         </div>
-        <p className="cta">
-          <span className="cta-inner">
-            <span className="cta-label">{t("ctaPre")}</span>
-            <a
-              href="https://timelyrouter.ai"
-              target="_blank"
-              rel="noreferrer"
-              className="cta-link"
-            >
+        <div className="cta">
+          <p className="cta-inner">
+            <span>{t("ctaPre")} </span>
+            <a href="https://timelyrouter.ai" target="_blank" rel="noreferrer" className="cta-link">
               {t("ctaLink")}
             </a>
-            <span className="cta-label">{t("ctaPost")}</span>
-          </span>
+            <span> {t("ctaPost")}</span>
+          </p>
           <span className="designed-by">Designed by Solar Pro 4</span>
-        </p>
+        </div>
       </section>
 
       <div className="section-head">
@@ -175,11 +164,20 @@ export default function HomePage() {
           <p>{t("emptyBody")}</p>
         </div>
       ) : (
-        <ol className="list">
-          {ranked.map((result, i) => (
-            <ModelCard key={result.id} result={result} rank={ranks[i]} />
-          ))}
-        </ol>
+        <div className="board">
+          <div className="board-cols" aria-hidden="true">
+            <span>{t("rank")}</span>
+            <span>{t("model")}</span>
+            <span>{t("accuracy")}</span>
+            <span className="col-lat">{t("avgLatency")}</span>
+            <span className="col-score">{t("AI IQ")}</span>
+          </div>
+          <ol className="list">
+            {ranked.map((result, i) => (
+              <ModelCard key={result.id} result={result} rank={ranks[i]} />
+            ))}
+          </ol>
+        </div>
       )}
     </main>
   );

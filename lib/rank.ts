@@ -39,12 +39,17 @@ export function formatKst(iso: string | null | undefined): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return new Intl.DateTimeFormat("ko-KR", {
+  // Build the string from numeric parts so server and client render
+  // identically regardless of ICU locale data (avoids hydration mismatch).
+  const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Seoul",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
-  }).format(d);
+    hour12: false,
+  }).formatToParts(d);
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+  return `${get("year")}.${get("month")}.${get("day")} ${get("hour")}:${get("minute")} KST`;
 }

@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
+import { Inter, Noto_Sans_KR } from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ogMeta from "@/data/og-meta.json";
 import "./globals.css";
 
-const notoSerifKr = Noto_Serif_KR({
-  weight: ["600", "900"],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-noto-serif-kr",
+  variable: "--font-inter",
 });
 
 const notoSansKr = Noto_Sans_KR({
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "800"],
   subsets: ["latin"],
   variable: "--font-noto-sans-kr",
 });
@@ -61,7 +60,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={`${notoSerifKr.variable} ${notoSansKr.variable}`}>
+    <html lang="ko" className={`${inter.variable} ${notoSansKr.variable}`}>
       <body>
         <LocaleProvider>
           <Header />

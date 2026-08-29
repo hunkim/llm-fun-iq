@@ -9,38 +9,41 @@ export default function Header() {
   const path = usePathname();
 
   return (
-    <header className="w-full border-b-2 border-ink bg-hanji/80">
-      <div className="wrap flex items-center justify-between gap-4 py-2">
+    <header className="site-header">
+      <div className="wrap site-header-inner">
         <Link href="/" className="brand">
           <svg className="brand-mark" viewBox="0 0 34 34" aria-hidden>
-            <rect width="34" height="34" rx="8" fill="#fffdf6" stroke="#2a1f14" strokeWidth="1.2" />
+            <rect width="34" height="34" rx="8" fill="#1c1b18" />
             {[0, 1, 2].flatMap((r) =>
               [0, 1, 2].map((c) => {
                 const missing = r === 2 && c === 2;
                 return missing ? null : (
                   <rect
                     key={`${r}-${c}`}
-                    x={6 + c * 8}
-                    y={6 + r * 8}
-                    width="6"
-                    height="6"
-                    rx="1.2"
-                    fill={r === 1 && c === 1 ? "#e0731d" : "none"}
-                    stroke="#2a1f14"
-                    strokeWidth="1.1"
+                    x={6.5 + c * 7.5}
+                    y={6.5 + r * 7.5}
+                    width="5.5"
+                    height="5.5"
+                    rx="1.4"
+                    fill={r === 1 && c === 1 ? "#d9480f" : "rgba(255,255,255,0.85)"}
                   />
                 );
               }),
             )}
-            <text x="27" y="28" textAnchor="middle" fontSize="8" fill="#2a1f14">
+            <text
+              x="24.4"
+              y="26.6"
+              textAnchor="middle"
+              fontSize="7.5"
+              fontWeight="700"
+              fill="#d9480f"
+            >
               ?
             </text>
           </svg>
           <span className="brand-name">
             FunIQ
-            <span className="ml-2 text-persimmon text-sm font-semibold align-middle">
-              {t("siteNameKo")}
-            </span>
+            <span className="brand-sub">{t("siteNameKo")}</span>
           </span>
         </Link>
         <nav className="nav">
@@ -54,24 +57,16 @@ export default function Header() {
             href="https://timelyrouter.ai"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline"
+            className="nav-ext"
           >
             timelyrouter.ai
           </a>
-          <div className="flex border-2 border-ink rounded-full overflow-hidden text-xs font-bold">
-            <button
-              onClick={() => setLocale("ko")}
-              className={`px-2.5 py-1 cursor-pointer ${locale === "ko" ? "bg-ink text-hanji" : "bg-transparent hover:bg-hanji-deep"}`}
-              aria-pressed={locale === "ko"}
-            >
-              {t("ko")}
+          <div className="lang-switch">
+            <button onClick={() => setLocale("ko")} aria-pressed={locale === "ko"}>
+              KO
             </button>
-            <button
-              onClick={() => setLocale("en")}
-              className={`px-2.5 py-1 cursor-pointer ${locale === "en" ? "bg-ink text-hanji" : "bg-transparent hover:bg-hanji-deep"}`}
-              aria-pressed={locale === "en"}
-            >
-              {t("en")}
+            <button onClick={() => setLocale("en")} aria-pressed={locale === "en"}>
+              EN
             </button>
           </div>
         </nav>
